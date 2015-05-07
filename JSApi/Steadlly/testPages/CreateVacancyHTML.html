@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+var web3 = parent.web3;
+
+var contractAddress = '0x3508be1c3de4d96df62c677c4279fa92433e402b';
+
+var CreateVacancy = [{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"InvalidateVacancy","outputs":
+
+[],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"showNrOfApplicants","outputs":
+
+[{"name":"n","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrVacancies","outputs":
+
+[{"name":"r","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"},
+
+{"name":"applicantID","type":"uint256"}],"name":"showApplicantsAddress","outputs":[{"name":"q","type":"address"}],"type":"function"},{"constant":false,"inputs":
+
+[{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},
+
+{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newVacancy","outputs":[{"name":"vacancyID","type":"uint256"}],"type":"function"},
+
+{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"returnVacancy","outputs":[{"name":"i","type":"address"},{"name":"w","type":"string32"},
+
+{"name":"e","type":"string32"},{"name":"r","type":"string32"},{"name":"t","type":"string32"},{"name":"y","type":"string32"},{"name":"u","type":"string32"},
+
+{"name":"o","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"ApplyForVacancy","outputs":
+
+[],"type":"function"}];
+
+
+
+var objectHandler = web3.eth.contract(contractAddress, CreateVacancy);
+
+function createNewVacancy(){
+
+	
+	
+	var startDate = document.getElementById('startDate').value;
+	var endDate = document.getElementById('endDate').value;
+	var jobTitle = document.getElementById('jobTitle').value;
+	var hoursOfWork = document.getElementById('hoursOfWork').value;
+	var skills = document.getElementById('skills').value;
+	var rules = document.getElementById('rules').value;
+	var n = objectHandler.newVacancy(startDate, endDate, jobTitle, hoursOfWork, skills, rules);
+	alert('Created a new vacancy');
+
+}
+function checkNumberVacancies(){
+
+	var n = objectHandler.returnNrVacancies();
+	document.getElementById('nrVacancies').value= n.toString();
+	
+}
+
+
+function applyForVacancy(){
+	var vacancyID = document.getElementById('vacancyID').value;
+	var n = objectHandler.ApplyForVacancy(vacancyID);
+	alert('You have applyed for vacancy with ID:'+vacancyID);
+	
+	
+}
+
+function showNrOfApplicants(){
+	document.getElementById('addresses').value ='';
+	var vacancyID = document.getElementById('vacancyID2').value;
+	var n = objectHandler.showNrOfApplicants(vacancyID);
+	document.getElementById('vacancyInfo').value = n.toString();
+	for (i=0; i<n;i++)
+	{
+		var a = objectHandler.showApplicantsAddress(vacancyID,i);
+		document.getElementById('addresses').value +="ApplicantID="+i+"  "+ a.toString()+'\n';
+
+
+
+	}
+}
+
+function checkVacancy(){
+	var vacancyID = document.getElementById('vacancyID3').value;
+	var n = objectHandler.returnVacancy(vacancyID);
+	document.getElementById('vacancyInfo2').value = ('The Company under the following address: '+n[0]+' has opened a vacancy from '+n[1]+' until '+n[2]+' for the position of  '+n[3]+' with the amount of working hours: '+n[4]+' and during his stay at the company he will aquire the following skills:'+n[5]+' under the following rules: '+n[6]+'  Vacancy valid: '+n[7]).toString();
+	
+}
+function ShowAllVacancies(){
+	document.getElementById('vacancyInfo3').value ='';
+	var n = objectHandler.returnNrVacancies();
+	for (i=0; i<n;i++)
+	{
+		var a = objectHandler.returnVacancy(i);
+		document.getElementById('vacancyInfo3').value +="VacancyID="+i+"  "+ ('The Company under the following address: '+a[0]+' has opened a vacancy from '+a[1]+' until '+a[2]+' for the position of  '+a[3]+' with the amount of working hours: '+a[4]+' and during his stay at the company he will aquire the following skills:'+a[5]+' under the following rules: '+a[6]+'  Vacancy valid: '+a[7]).toString()+'\n'+'-------------------------------------'+'\n';
+
+
+
+	}
+}
+
+function addSkill(){
+
+	var skill = document.getElementById('dropdownskills').value;
+	document.getElementById('skills').value += skill + ' ';
+}
+function clearField(){
+	document.getElementById('skills').value = '';
+}
+
+</script>
+<head>
+	<title></title>
+</head>
+<body>
+    <h1>Create Vacancy</h1>
+   
+   <p>Start Date <input type="date", id='startDate' /></p><br>
+    <p>End Date <input type="date", id='endDate' /></p><br>
+    <p>Job Title <input id='jobTitle' /></p><br>
+    <p>Hours of Work <input id='hoursOfWork' /></p><br>
+   <select id="dropdownskills">
+  <option>PHP</option>
+  <option>Java</option>
+  <option>Python</option>
+  <option>HTML</option>
+  <option>C++</option>
+  <option>C#</option>
+  <option>JavaScript</option>
+</select> <button onclick="addSkill()">Add skill</button> <button onclick="clearField()">Clear Field</button>
+    <p>Skills <input id='skills' disabled="disabled" /></p><br>
+
+    <p>Rules <input id='rules' /></p><br>
+    <br>
+    <button onclick="createNewVacancy()">Create new vacancy</button>
+
+
+	<h1>Check Number of Vacancies</h1>
+
+	
+	<button onclick="checkNumberVacancies()">Check number of vacancies</button>
+	
+	<p>Number of vacancies: <input id='nrVacancies' /></p><br>
+
+	<h1>Apply for vacancy</h1>
+	<p>Enter VacancyID<input id='vacancyID'/></p>
+	<button onclick="applyForVacancy()">Apply for vacancy</button>
+	
+
+	 <h1>Show number of applicants for specific vacancy</h1>
+	<p>Enter VacancyID<input id='vacancyID2'/></p>
+	<button onclick="showNrOfApplicants()">Show</button>
+	<p>Number of applicants:</p>
+	 <input id='vacancyInfo' ></input>
+	 <textarea id='addresses', rows="10", cols="120"> </textarea>
+
+	 <h1>Show Vacancy With ID</h1>
+	<p>Enter VacancyID<input id='vacancyID3'/></p>
+	<button onclick="checkVacancy()">Show</button>
+	<p>Vacancy:</p>
+	 <textarea id='vacancyInfo2', rows="10", cols="120"> </textarea>
+
+	 <h1>Show All Vacancies</h1>
+	
+	<button onclick="ShowAllVacancies()">Show</button>
+	<p>Vacancies:</p>
+	 <textarea id='vacancyInfo3', rows="10", cols="120"> </textarea>
+
+</body>
+<script type="text/javascript">
+	 $(function() {
+    $( "#startDate" ).datepicker();
+    $( "#endDate" ).datepicker();
+  });
+	 </script>
+</html>

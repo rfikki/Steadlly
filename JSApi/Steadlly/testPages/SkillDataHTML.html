@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+var web3 = parent.web3;
+
+var contractAddress = '0x17619fe916c78b6634a444ff680f8558b2fd647f';
+
+var SkillDataContract = [{"constant":true,"inputs":[{"name":"addr","type":"address"},
+
+{"name":"skillID","type":"uint256"}],"name":"returnSkills","outputs":[{"name":"u","type":"string32"}],"type":"function"},{"constant":true,"inputs":
+
+[{"name":"addr","type":"address"}],"name":"returnNrSkills","outputs":[{"name":"n","type":"uint256"}],"type":"function"},{"constant":false,"inputs":
+
+[{"name":"addr","type":"address"},{"name":"skillname","type":"string32"}],"name":"addSkilltoPerson","outputs":[],"type":"function"}];
+
+
+
+var objectHandler = web3.eth.contract(contractAddress, SkillDataContract);
+
+function addSkills(){
+
+	
+	
+	var addr = document.getElementById('personAddress').value;
+	var skills = document.getElementById('skills').value;
+	var b = objectHandler.addSkilltoPerson(addr,skills);
+	alert('Skills added successfuly!');
+	
+
+}
+
+function showNrSkills(){
+
+	var addr = document.getElementById('personAddress2').value;
+	var c = objectHandler.returnNrSkills(addr);
+	document.getElementById('nrSkills').value = c.toString();
+
+
+}
+function returnSkills(){
+	document.getElementById('skillsInfo').value ='';
+	var addr = document.getElementById('personAddress3').value;
+	var w = objectHandler.returnNrSkills(addr);
+	for (i=0; i<w; i++)
+	{
+	var p = objectHandler.returnSkills(addr,i);
+	document.getElementById('skillsInfo').value +="Endorsment ID="+i+"  "+ p.toString()+'\n';
+	}
+}
+
+function addSkill(){
+
+	var skill = document.getElementById('dropdownskills').value;
+	document.getElementById('skills').value += skill + ' ';
+}
+function clearField(){
+	document.getElementById('skills').value = '';
+}
+
+
+</script>
+<head>
+	<title></title>
+</head>
+<body>
+
+<h1>Add Skills To Person</h1>
+<p>Address<input id='personAddress' /></p><br>
+<select id="dropdownskills">
+  <option>PHP</option>
+  <option>Java</option>
+  <option>Python</option>
+  <option>HTML</option>
+  <option>C++</option>
+  <option>C#</option>
+  <option>JavaScript</option>
+</select> <button onclick="addSkill()">Add skill</button> <button onclick="clearField()">Clear Field</button>
+    <p>Skills <input id='skills' disabled="disabled" /></p><br>
+    <button onclick="addSkills()">Confirm</button>
+
+ <h1>Show Number of endorsments for specific person</h1>
+ <p>Enter Address<input id='personAddress2' /></p><br>
+ <button onclick="showNrSkills()">Show Number of Skills</button>
+  <p>Number of endorsments<input id='nrSkills' /></p><br>
+
+  <h1>Return Skills for specific Person</h1>
+  <p>Enter Address<input id='personAddress3'/></p>
+	<button onclick="returnSkills()">Show</button>
+	<p>Skills:</p>
+	 <textarea id='skillsInfo', rows="10", cols="120"> </textarea>
+
+   
+</body>
+
+</html>

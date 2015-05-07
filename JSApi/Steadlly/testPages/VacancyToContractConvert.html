@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+
+var web3 = parent.web3;
+
+
+var vacancyContractAddress = '0x3508be1c3de4d96df62c677c4279fa92433e402b';
+var contractContractAddress = '0x545fd95308230e9f0cf970b4cd8677bc1089e875';
+
+var CreateVacancy = [{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"InvalidateVacancy","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"showNrOfApplicants","outputs":[{"name":"n","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrVacancies","outputs":[{"name":"r","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newVacancy","outputs":[{"name":"vacancyID","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"returnVacancy","outputs":[{"name":"q","type":"address"},{"name":"w","type":"string32"},{"name":"e","type":"string32"},{"name":"r","type":"string32"},{"name":"t","type":"string32"},{"name":"y","type":"string32"},{"name":"u","type":"string32"},{"name":"o","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"ApplyForVacancy","outputs":[],"type":"function"}];
+
+var CreateContract = [{"constant":true,"inputs":[{"name":"contractID","type":"uint256"}],"name":"returnContract","outputs":[{"name":"q","type":"address"},{"name":"w","type":"string32"},
+
+{"name":"e","type":"string32"},{"name":"r","type":"string32"},{"name":"t","type":"string32"},{"name":"y","type":"string32"},{"name":"u","type":"string32"},{"name":"i","type":"address"},
+
+{"name":"o","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"employee","type":"address"},{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},
+
+{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newContract","outputs":
+
+[{"name":"contractID","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"contractID","type":"uint256"}],"name":"DestroyContract","outputs":[],"type":"function"},{"constant":true,"inputs":
+
+[{"name":"contractID","type":"uint256"}],"name":"ChechContractStatus","outputs":[{"name":"retVal","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrContracts","outputs":
+
+[{"name":"r","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"contractID","type":"uint256"}],"name":"SignContract","outputs":[],"type":"function"}];
+
+var vacancyHandler = web3.eth.contract(vacancyContractAddress, CreateVacancy);
+var contractHandler = web3.eth.contract(contractContractAddress, CreateContract);
+var employeeAddress;
+var startDate;
+var endDate;
+var jobTitle;
+var hoursOfWork;
+var skills;
+var rules;
+var signed = false;
+var companyAddress;
+function getVacancyInfo(){
+	document.getElementById('btnCreate').removeAttribute('disabled');
+	var vacancyID = document.getElementById('vacancyID').value;
+	var n = vacancyHandler.returnVacancy(vacancyID);
+
+	//document.getElementById('contractInfo').value = ('The Employee with the address: '+n[0]+' has agreed to start working from '+n[1]+' untill '+n[2]+' on the position of the '+n[3]+' with the amount of working hours: '+n[4]+' and during his stay at the company he will aquire the following skills:'+n[5]+' under the following rules: '+n[6]+' and the company address is:'+n[7]+' Contract signed: '+n[8]).toString();
+	employeeAddress = document.getElementById('employeeAddress').value;
+	startDate = n[1];
+	endDate = n[2];
+	jobTitle = n[3];
+	hoursOfWork = n[4];
+	skills = n[5];
+	rules = n[6];
+	companyAddress = n[0];
+
+	
+	document.getElementById('previewBox').value = ('The Employee with the address: '+employeeAddress+' has agreed to start working from '+startDate+' untill '+endDate+' on the position of the '+jobTitle+' with the amount of working hours: '+hoursOfWork+' and during his stay at the company he will aquire the following skills:'+skills+' under the following rules: '+rules+' and the company address is:'+companyAddress+' Contract signed: '+signed).toString();
+	
+
+}
+
+function createNewContract(){
+// (address employee,string32 startDate, string32 endDate, string32 jobTitle,string32 hoursOfWork,string32 skills, string32 rules ) 
+	var id = document.getElementById('vacancyID').value;
+	var a = vacancyHandler.InvalidateVacancy(id);
+	var n = contractHandler.newContract(employeeAddress, startDate, endDate, jobTitle, hoursOfWork, skills, rules);
+	alert('Created a new contract');
+}
+function checkNumberContract(){
+
+	var n = contractHandler.returnNrContracts();
+	document.getElementById('nrContracts').value= n.toString();
+	// alert(n[1] + n[2]);
+}
+
+
+
+
+</script>
+<head>
+	<title></title>
+</head>
+<body>
+    <h1>Create Contract from Vacancy</h1>
+   
+   <p>Selected Candidate Address <input id='employeeAddress' /></p><br>
+   
+   <p>Vacancy ID<input id='vacancyID' /></p><br>
+    
+    <br>
+   <p>Contract Preview</p>
+	 <textarea id='previewBox', rows="10", cols="120"> </textarea>
+	 <br>
+	 <button  onclick="getVacancyInfo()">Preview</button> <br>
+ 	<button id='btnCreate' onclick="createNewContract()" disabled="disabled">Create contract</button>
+ 	
+	<h1>Check Number of Contracts</h1>
+
+	
+	<button onclick="checkNumberContract()">Check number of contracts</button>
+	
+	<p>Number of vacancies: <input id='nrContracts' /></p><br>
+
+	
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+var web3 = parent.web3;
+
+var contractAddress = '0x545fd95308230e9f0cf970b4cd8677bc1089e875';
+
+var CreateContract = [{"constant":true,"inputs":[{"name":"contractID","type":"uint256"}],"name":"returnContract","outputs":[{"name":"q","type":"address"},{"name":"w","type":"string32"},
+
+{"name":"e","type":"string32"},{"name":"r","type":"string32"},{"name":"t","type":"string32"},{"name":"y","type":"string32"},{"name":"u","type":"string32"},{"name":"i","type":"address"},
+
+{"name":"o","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"employee","type":"address"},{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},
+
+{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newContract","outputs":
+
+[{"name":"contractID","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"contractID","type":"uint256"}],"name":"DestroyContract","outputs":[],"type":"function"},{"constant":true,"inputs":
+
+[{"name":"contractID","type":"uint256"}],"name":"ChechContractStatus","outputs":[{"name":"retVal","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrContracts","outputs":
+
+[{"name":"r","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"contractID","type":"uint256"}],"name":"SignContract","outputs":[],"type":"function"}];
+var objectHandler = web3.eth.contract(contractAddress, CreateContract);
+function createNewContract(){
+// (address employee,string32 startDate, string32 endDate, string32 jobTitle,string32 hoursOfWork,string32 skills, string32 rules ) 
+	
+	var employeeAddress = document.getElementById('employeeAddress').value;
+	var startDate = document.getElementById('startDate').value;
+	var endDate = document.getElementById('endDate').value;
+	var jobTitle = document.getElementById('jobTitle').value;
+	var hoursOfWork = document.getElementById('hoursOfWork').value;
+	var skills = document.getElementById('skills').value;
+	var rules = document.getElementById('rules').value;
+	var n = objectHandler.newContract(employeeAddress, startDate, endDate, jobTitle, hoursOfWork, skills, rules);
+	alert('Created a new contract');
+}
+function checkNumberContract(){
+
+	var n = objectHandler.returnNrContracts();
+	document.getElementById('nrContracts').value= n.toString();
+	// alert(n[1] + n[2]);
+}
+function checkContractByID(){
+	var contractID = document.getElementById('contractID').value;
+	var n = objectHandler.returnContract(contractID);
+	document.getElementById('contractInfo').value = ('The Employee with the address: '+n[0]+' has agreed to start working from '+n[1]+' untill '+n[2]+' on the position of the '+n[3]+' with the amount of working hours: '+n[4]+' and during his stay at the company he will aquire the following skills:'+n[5]+' under the following rules: '+n[6]+' and the company address is:'+n[7]+' Contract signed: '+n[8]).toString();
+}
+
+function addSkill(){
+
+	var skill = document.getElementById('dropdownskills').value;
+	document.getElementById('skills').value += skill + ' ';
+}
+function clearField(){
+	document.getElementById('skills').value = '';
+}
+
+function ShowAllContracts(){
+	document.getElementById('contractInfo3').value ='';
+	var n = objectHandler.returnNrContracts();
+	for (i=0; i<n;i++)
+	{
+		var a = objectHandler.returnContract(i);
+		document.getElementById('contractInfo3').value +="ContractID="+i+"  "+ ('The Company under the following address: '+a[0]+' has opened a vacancy from '+a[1]+' until '+a[2]+' for the position of  '+a[3]+' with the amount of working hours: '+a[4]+' and during his stay at the company he will aquire the following skills:'+a[5]+' under the following rules: '+a[6]+'  Vacancy valid: '+a[7]).toString()+'\n'+'-------------------------------------'+'\n';
+
+
+
+	}
+}
+</script>
+<head>
+	<title></title>
+</head>
+<body>
+    <h1>Create new Contract</h1>
+   <p>Employee Address <input id='employeeAddress' /></p><br>
+   <p>Start Date <input type="date" id='startDate' /></p><br>
+    <p> End Date <input type="date" id='endDate' /></p><br>
+    <p>Job Title <input id='jobTitle' /></p><br>
+    <p>Hours of Work <input id='hoursOfWork' /></p><br>
+
+    <select id="dropdownskills">
+  <option>PHP</option>
+  <option>Java</option>
+  <option>Python</option>
+  <option>HTML</option>
+  <option>C++</option>
+  <option>C#</option>
+  <option>JavaScript</option>
+</select> <button onclick="addSkill()">Add skill</button> <button onclick="clearField()">Clear Field</button>
+    <p>Skills <input id='skills' disabled="disabled" /></p><br>
+    <p>Rules <input id='rules' /></p><br>
+    <br>
+    <button onclick="createNewContract()">Create new contract</button>
+
+
+	<h1>Check number of contracts</h1>
+
+	
+	<button onclick="checkNumberContract()">Check contracts number</button>
+	
+	<p>Number of contracts: <input id='nrContracts' /></p><br>
+
+	<h1>Retreive contract</h1>
+	<p>Enter ContractID<input id='contractID'/></p>
+	<button onclick="checkContractByID()">Retreive Contract</button>
+	<p>Contract:</p>
+	 <textarea id='contractInfo', rows="10", cols="120" ></textarea>
+
+	 <h1>Show all contracts</h1>
+	 <button onclick="ShowAllContracts()">Show</button>
+	<p>Contracts:</p>
+	 <textarea id='contractInfo3', rows="10", cols="120"> </textarea>
+</body>
+<script type="text/javascript">
+	 $(function() {
+    $( "#startDate" ).datepicker();
+    $( "#endDate" ).datepicker();
+  });
+
+</script>
+</html>

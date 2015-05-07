@@ -1,7 +1,7 @@
 /**
  * Created by lore on 05.05.15.
  */
-
+var web3 = parent.web3;
 
 var Steadlly = Steadlly || {
         _urlToContracts: '',
@@ -22,8 +22,9 @@ var Steadlly = Steadlly || {
          * @returns {Object} Web3 Object corresponding to the
          */
         get: function (name) {
-            for (var contract in Steadlly._contracts._list) {
-                if (Steadlly._contracts._list[contract].name === name) return Steadlly._contracts._list[contract].object;
+            for (var i = 0 ; i < Steadlly._contracts._list.length; i++) {
+                console.log(Steadlly._contracts._list[i].name);
+                if (Steadlly._contracts._list[i].name === name) return Steadlly._contracts._list[i].object;
             }
         },
         /**
@@ -38,11 +39,15 @@ var Steadlly = Steadlly || {
                     url: Steadlly._urlToContracts,
                     async: false,
                     success: function (data) {
-                        for (contract in data) {
-                            if (contractsToLoad.indexOf(data[contract].name) != -1) {
-                                //Steadlly._contracts._list.push({'name': contract.name,'object': web3.eth.contract(contract.address, contract.contractDescription)});
-                                Steadlly._contracts._list.push({'name': data[contract].name, 'object': 5});
+                        data = (JSON.parse(data));
+                        for (var i = 0 ; i < data.contracts.length; i++) {
+                            if (contractsToLoad.indexOf(data.contracts[i].name) != -1) {
+                                // in order to parse a json only " are accepted
+                                var arrayDesc = data.contracts[i].contractDescription.replace(/'/ig, "\"");
+                                arrayDesc = JSON.parse(arrayDesc);
+                                Steadlly._contracts._list.push({'name': data.contracts[i].name,'object': web3.eth.contract(data.contracts[i].address, arrayDesc)});
                             }
+                            console.log(Steadlly._contracts._list)
                         }
                     },
                     error: function (data) {
@@ -151,8 +156,17 @@ var Steadlly = Steadlly || {
 
 $(document).ready(function(){
 
-    Steadlly.init('Steadlly/conf/contracts.json', ['Steadlly'], ['ui','nav']);
-    console.log(Steadlly.get('Steadlly'));
+    
+    Steadlly.init('Steadlly/conf/contracts.json', ['CompanyData'], ['ui','nav']);
+    companyData = Steadlly.get('CompanyData');
+
+    // EXAMPLE USAGE
+    // -------------------------------------------------------------------------
+    //v = companyData.returnCompany("0xa48874c7a1a89c317c14b781120df369f9a38d93");
+    //console.log(v);
+    //companyData.createCompany("Shit", "123213123", "312412541241");
+
+
 
 
 });

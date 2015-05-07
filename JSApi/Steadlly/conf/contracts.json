@@ -1,11 +1,15 @@
 {
-  "contract":
-  {
-    "name": "Steaddly",
-    "address":"0xf5404961416c9f38122d5ed1923b6579a597954e",
-    "contractDescription": "[{'constant':false,'inputs':[{'name':'vacancyID','type':'uint256'}],'name':'InvalidateVacancy','outputs':[],'type':'function'},{'constant':true,'inputs':[{'name':'vacancyID','type':'uint256'}],'name':'showNrOfApplicants','outputs':[{'name':'n','type':'uint256'}],'type':'function'},{'constant':true,'inputs':[],'name':'returnNrVacancies','outputs':[{'name':'r','type':'uint256'}],'type':'function'},{'constant':true,'inputs':[{'name':'vacancyID','type':'uint256'},{'name':'applicantID','type':'uint256'}],'name':'showApplicantsAddress','outputs':[{'name':'q','type':'address'}],'type':'function'},{'constant':false,'inputs':[{'name':'startDate','type':'string32'},{'name':'endDate','type':'string32'},{'name':'jobTitle','type':'string32'},{'name':'hoursOfWork','type':'string32'},{'name':'skills','type':'string32'},{'name':'rules','type':'string32'}],'name':'newVacancy','outputs':[{'name':'vacancyID','type':'uint256'}],'type':'function'},{'constant':true,'inputs':[{'name':'vacancyID','type':'uint256'}],'name':'returnVacancy','outputs':[{'name':'i','type':'address'},{'name':'w','type':'string32'},{'name':'e','type':'string32'},{'name':'r','type':'string32'},{'name':'t','type':'string32'},{'name':'y','type':'string32'},{'name':'u','type':'string32'},{'name':'o','type':'bool'}],'type':'function'},{'constant':false,'inputs':[{'name':'vacancyID','type':'uint256'}],'name':'ApplyForVacancy','outputs': [],'type':'function'}];"
-  }
-
-
+  "contracts":
+  [
+    {
+      "name": "CompanyData",
+      "address":"0xee78f019f20bdaebdb6480beb76ed79ea635b3bb",
+      "contractDescription": "[{'constant':true,'inputs':[{'name':'admID','type':'uint256'}],'name':'returnAdministrators','outputs':[{'name':'adr','type':'address'}],'type':'function'},{'constant':false,'inputs':[{'name':'cname','type':'string32'},{'name':'KVK','type':'uint256'},{'name':'phone','type':'uint256'}],'name':'createCompany','outputs':[],'type':'function'},{'constant':true,'inputs':[],'name':'returnNrAdmins','outputs':[{'name':'w','type':'uint256'}],'type':'function'},{'constant':false,'inputs':[{'name':'addr','type':'address'}],'name':'addAdmin','outputs':[],'type':'function'},{'constant':false,'inputs':[{'name':'adr','type':'uint256'}],'name':'removeAdmin','outputs':[],'type':'function'},{'constant':true,'inputs':[{'name':'adr','type':'address'}],'name':'returnCompany','outputs':[{'name':'name','type':'string32'},{'name':'own','type':'address'},{'name':'kvk','type':'uint256'},{'name':'phone','type':'uint256'}],'type':'function'}]"
+    }
+  ]
 
 }
+
+
+
+
