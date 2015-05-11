@@ -17,3 +17,14 @@ b28f86d7… :addSkilltoPerson
 
 
 address: 0x17619fe916c78b6634a444ff680f8558b2fd647f
+
+
+
+var SkillDataContract = web3.eth.contractFromAbi([{"constant":true,"inputs":[{"name":"addr","type":"address"},{"name":"skillID","type":"uint256"}],"name":"returnSkills","outputs":[{"name":"u","type":"string32"},{"name":"w","type":"address"}],"type":"function"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"returnNrSkills","outputs":[{"name":"n","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"addr","type":"address"},{"name":"skillname","type":"string32"}],"name":"addSkilltoPerson","outputs":[],"type":"function"}]);
+contract SkillDataContract{function returnSkills(address addr,uint256 skillID)constant returns(string32 u,address w){}function returnNrSkills(address addr)constant returns(uint256 n){}function addSkilltoPerson(address addr,string32 skillname){}}
+53e25296… :returnSkills
+6002d1a2… :returnNrSkills
+b28f86d7… :addSkilltoPerson
+
+
+address: 0x5f6d36e42e35cb96a5ec36153e6f6f0535ee0232
