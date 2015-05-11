@@ -26,6 +26,20 @@ var Steadlly = Steadlly || {
                 // console.log(Steadlly._contracts._list[i].name);
                 if (Steadlly._contracts._list[i].name === name) return Steadlly._contracts._list[i].object;
             }
+            throw new Error("The contract was not loaded. Load it in.")
+        },
+        loadExperience: function(){
+            //TODO if the work and experience contracts are loaded, then load in the data
+            //returnNrSkills
+            //returnSkills
+            // Nr skills
+            var sk = Steadlly.get("SkillDataContract");
+            var skl = sk.returnNrSkills();
+            for (var i =0; i < skl; i++){
+                var skillName = sk.returnSkills(Steadlly.account._address, i);
+                //TODO -> this could actually live on the client device so it will possible to make less request to the localstorage.
+                Steadlly.account._skills.push(skillName);
+            }
         },
         /**
          * The contracts are loaded directly from a json file.
@@ -57,6 +71,16 @@ var Steadlly = Steadlly || {
 
             }
         },
+
+        account: {
+            _address: web3.eth.coinbase,
+            _skills: [],
+            _jobs: [],
+            // False if he does not own a company.
+            _companyOwner: false
+
+        },
+
         /***
          * Loads the modules required
          * @param {Array|String}modules to load
@@ -73,8 +97,22 @@ var Steadlly = Steadlly || {
                      * @param objectId
                      */
                     valueToInput: function (value, objectId) {
-                        value = value.toString();
+                        var value = value.toString();
                         $('#objectId').val(value);
+                    },
+                    /***
+                     *
+                     */
+                    displayExperience: function(){
+                        for(var i = 0 ; i < Steadlly.account._skills.length; i ++ )
+                        {
+                            Steadlly.ui.addExperience(Steadlly.account._skills[i],"skills", null);
+                        }
+
+                        for(var i = 0 ; i < Steadlly.account._jobs.length; i ++ )
+                        {
+                            Steadlly.ui.addExperience(Steadlly.account._jobs[i],"jobs", null);
+                        }
                     },
                     /***
                      * Adds a skill or job to the UI on the customization page.
@@ -86,17 +124,17 @@ var Steadlly = Steadlly || {
                     addExperience: function (experienceName, parentName, hiddenElement) {
                         $(('.' + parentName)).append(('<span id="ex_' + experienceName + '">' + experienceName + '<button>X</button></span>'));
                         if (parentName == "skills") {
-                            if (Steadlly.ui._skills.indexOf(experienceName) == -1) {
-                                Steadlly.ui._skills.push('skillName');
+                            if (Steadlly.account._skills.indexOf(experienceName) == -1) {
+                                Steadlly.account._skills.push('skillName');
                                 return true;
                             }
                         } else if (parentName == "jobs") {
-                            if (Steadlly.ui._jobs.indexOf(experienceName) == -1) {
-                                Steadlly.ui._jobs.push('skillName');
+                            if (Steadlly.account._jobs.indexOf(experienceName) == -1) {
+                                Steadlly.account._jobs.push('skillName');
                                 return true;
                             }
                         } else {
-                            throw new Error("Such experience type does not exist.");
+                            throw new Error("Such experience type already exists.");
                         }
                         return false;
                     },
@@ -147,6 +185,12 @@ var Steadlly = Steadlly || {
                     }
 
                 }
+
+            }
+
+            if (modules.indexOf('company')){
+                //    TODO add the company details here
+
 
             }
 
