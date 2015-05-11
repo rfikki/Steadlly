@@ -1,0 +1,88 @@
+var CreateVacancy = web3.eth.contractFromAbi([{"constant":false,"inputs":[{"name":"applicant","type":"address"},{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newVacancy","outputs":[{"name":"vacancyID","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"ApplyForVacancy","outputs":[],"type":"function"}]);
+contract CreateVacancy{function newVacancy(address applicant,string32 startDate,string32 endDate,string32 jobTitle,string32 hoursOfWork,string32 skills,string32 rules)returns(uint256 vacancyID){}function ApplyForVacancy(uint256 vacancyID){}}
+4b9a2f49… :newVacancy
+b30ca711… :ApplyForVacancy
+
+
+address: 0x3433e53be6d50ddd8786272697ee561147c0c965
+
+
+
+
+var CreateVacancy = web3.eth.contractFromAbi([{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"InvalidateVacancy","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrVacancies","outputs":[{"name":"r","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newVacancy","outputs":[{"name":"vacancyID","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"ApplyForVacancy","outputs":[],"type":"function"}]);
+contract CreateVacancy{function InvalidateVacancy(uint256 vacancyID){}function returnNrVacancies()constant returns(uint256 r){}function newVacancy(string32 startDate,string32 endDate,string32 jobTitle,string32 hoursOfWork,string32 skills,string32 rules)returns(uint256 vacancyID){}function ApplyForVacancy(uint256 vacancyID){}}
+0e50f87b… :InvalidateVacancy
+2c94032b… :returnNrVacancies
+8371c4f8… :newVacancy
+b30ca711… :ApplyForVacancy
+
+
+address: 0x98fa712ca4cd8622b7c649133a4e7be053afca47
+
+
+var CreateVacancy = web3.eth.contractFromAbi([{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"InvalidateVacancy","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrVacancies","outputs":[{"name":"r","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newVacancy","outputs":[{"name":"vacancyID","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"ApplyForVacancy","outputs":[{"name":"returnNumber","type":"uint256"}],"type":"function"}]);
+contract CreateVacancy{function InvalidateVacancy(uint256 vacancyID){}function returnNrVacancies()constant returns(uint256 r){}function newVacancy(string32 startDate,string32 endDate,string32 jobTitle,string32 hoursOfWork,string32 skills,string32 rules)returns(uint256 vacancyID){}function ApplyForVacancy(uint256 vacancyID)constant returns(uint256 returnNumber){}}
+0e50f87b… :InvalidateVacancy
+2c94032b… :returnNrVacancies
+8371c4f8… :newVacancy
+b30ca711… :ApplyForVacancy
+
+
+address: 0xb87412def48dc78ddd3cdba2f51cc72698872bac
+
+
+
+
+var CreateVacancy = web3.eth.contractFromAbi([{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"InvalidateVacancy","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"showNrOfApplicants","outputs":[{"name":"n","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrVacancies","outputs":[{"name":"r","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newVacancy","outputs":[{"name":"vacancyID","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"ApplyForVacancy","outputs":[],"type":"function"}]);
+contract CreateVacancy{function InvalidateVacancy(uint256 vacancyID){}function showNrOfApplicants(uint256 vacancyID)constant returns(uint256 n){}function returnNrVacancies()constant returns(uint256 r){}function newVacancy(string32 startDate,string32 endDate,string32 jobTitle,string32 hoursOfWork,string32 skills,string32 rules)returns(uint256 vacancyID){}function ApplyForVacancy(uint256 vacancyID){}}
+0e50f87b… :InvalidateVacancy
+231c66e2… :showNrOfApplicants
+2c94032b… :returnNrVacancies
+8371c4f8… :newVacancy
+b30ca711… :ApplyForVacancy
+
+
+address: 0xc2e1b385fddf839f777260dc9d3e16440decb283
+
+
+
+var CreateVacancy = web3.eth.contractFromAbi([{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"InvalidateVacancy","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"showNrOfApplicants","outputs":[{"name":"n","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrVacancies","outputs":[{"name":"r","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newVacancy","outputs":[{"name":"vacancyID","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"returnVacancy","outputs":[{"name":"q","type":"address"},{"name":"w","type":"string32"},{"name":"e","type":"string32"},{"name":"r","type":"string32"},{"name":"t","type":"string32"},{"name":"y","type":"string32"},{"name":"u","type":"string32"},{"name":"o","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"ApplyForVacancy","outputs":[],"type":"function"}]);
+contract CreateVacancy{function InvalidateVacancy(uint256 vacancyID){}function showNrOfApplicants(uint256 vacancyID)constant returns(uint256 n){}function returnNrVacancies()constant returns(uint256 r){}function newVacancy(string32 startDate,string32 endDate,string32 jobTitle,string32 hoursOfWork,string32 skills,string32 rules)returns(uint256 vacancyID){}function returnVacancy(uint256 vacancyID)constant returns(address q,string32 w,string32 e,string32 r,string32 t,string32 y,string32 u,bool o){}function ApplyForVacancy(uint256 vacancyID){}}
+0e50f87b… :InvalidateVacancy
+231c66e2… :showNrOfApplicants
+2c94032b… :returnNrVacancies
+8371c4f8… :newVacancy
+9ff4e91f… :returnVacancy
+b30ca711… :ApplyForVacancy
+
+
+address: 0xb6d537a1229dd5cbe11d329f529aed7b5504b452
+
+
+
+var CreateVacancy = web3.eth.contractFromAbi([{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"InvalidateVacancy","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"showNrOfApplicants","outputs":[{"name":"n","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrVacancies","outputs":[{"name":"r","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"},{"name":"applicantID","type":"uint256"}],"name":"showApplicantsAddress","outputs":[{"name":"q","type":"address"}],"type":"function"},{"constant":false,"inputs":[{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newVacancy","outputs":[{"name":"vacancyID","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"returnVacancy","outputs":[{"name":"i","type":"address"},{"name":"w","type":"string32"},{"name":"e","type":"string32"},{"name":"r","type":"string32"},{"name":"t","type":"string32"},{"name":"y","type":"string32"},{"name":"u","type":"string32"},{"name":"o","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"ApplyForVacancy","outputs":[],"type":"function"}]);
+contract CreateVacancy{function InvalidateVacancy(uint256 vacancyID){}function showNrOfApplicants(uint256 vacancyID)constant returns(uint256 n){}function returnNrVacancies()constant returns(uint256 r){}function showApplicantsAddress(uint256 vacancyID,uint256 applicantID)constant returns(address q){}function newVacancy(string32 startDate,string32 endDate,string32 jobTitle,string32 hoursOfWork,string32 skills,string32 rules)returns(uint256 vacancyID){}function returnVacancy(uint256 vacancyID)constant returns(address i,string32 w,string32 e,string32 r,string32 t,string32 y,string32 u,bool o){}function ApplyForVacancy(uint256 vacancyID){}}
+0e50f87b… :InvalidateVacancy
+231c66e2… :showNrOfApplicants
+2c94032b… :returnNrVacancies
+80793029… :showApplicantsAddress
+8371c4f8… :newVacancy
+9ff4e91f… :returnVacancy
+b30ca711… :ApplyForVacancy
+
+
+address: 0xf5404961416c9f38122d5ed1923b6579a597954e
+
+
+
+var CreateVacancy = web3.eth.contractFromAbi([{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"InvalidateVacancy","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"showNrOfApplicants","outputs":[{"name":"n","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrVacancies","outputs":[{"name":"r","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"},{"name":"applicantID","type":"uint256"}],"name":"showApplicantsAddress","outputs":[{"name":"q","type":"address"}],"type":"function"},{"constant":false,"inputs":[{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newVacancy","outputs":[{"name":"vacancyID","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"returnVacancy","outputs":[{"name":"i","type":"address"},{"name":"w","type":"string32"},{"name":"e","type":"string32"},{"name":"r","type":"string32"},{"name":"t","type":"string32"},{"name":"y","type":"string32"},{"name":"u","type":"string32"},{"name":"o","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"vacancyID","type":"uint256"}],"name":"ApplyForVacancy","outputs":[],"type":"function"}]);
+contract CreateVacancy{function InvalidateVacancy(uint256 vacancyID){}function showNrOfApplicants(uint256 vacancyID)constant returns(uint256 n){}function returnNrVacancies()constant returns(uint256 r){}function showApplicantsAddress(uint256 vacancyID,uint256 applicantID)constant returns(address q){}function newVacancy(string32 startDate,string32 endDate,string32 jobTitle,string32 hoursOfWork,string32 skills,string32 rules)returns(uint256 vacancyID){}function returnVacancy(uint256 vacancyID)constant returns(address i,string32 w,string32 e,string32 r,string32 t,string32 y,string32 u,bool o){}function ApplyForVacancy(uint256 vacancyID){}}
+0e50f87b… :InvalidateVacancy
+231c66e2… :showNrOfApplicants
+2c94032b… :returnNrVacancies
+80793029… :showApplicantsAddress
+8371c4f8… :newVacancy
+9ff4e91f… :returnVacancy
+b30ca711… :ApplyForVacancy
+
+address: 0x3508be1c3de4d96df62c677c4279fa92433e402b
