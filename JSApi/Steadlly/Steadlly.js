@@ -115,7 +115,7 @@ var Steadlly = Steadlly || {
                         $('.display .' + parentName + '>#ex_' + experienceName).fadeOut();
                     },
                     /***
-                     *
+                     * Generates a json object to be sent to the blockchain
                      * @param {String} extra
                      */
                     genSkillsAndJobsObject: function (extra) {
@@ -137,13 +137,15 @@ var Steadlly = Steadlly || {
 
                 Steadlly.nav = {
                     go: function (url){
-                        localStorage.setItem('last_url', window.location.href);
                         window.location.href=url;
                     },
-                    back : function(url){
-                        window.location.href=localStorage.getItem('last_url');
-                        localStorage.setItem('last_url', window.location.href);
+                    alert: function(msg){
+                    	alert(msg);
+                    },
+                    promptDecision: function(msg,options){
+                    	//TODO
                     }
+
                 }
 
             }
@@ -156,9 +158,14 @@ var Steadlly = Steadlly || {
 
 $(document).ready(function(){
 
-    
     Steadlly.init('Steadlly/conf/contracts.json', ['CompanyData'], ['ui','nav']);
     companyData = Steadlly.get('CompanyData');
+
+    var data = companyData.returnCompany("0xa48874c7a1a89c317c14b781120df369f9a38d93");
+
+    document.body.addEventListener('click', function(){
+    	Steadlly.nav.go('http://www.google.com');
+    });
 
     // EXAMPLE USAGE
     // -------------------------------------------------------------------------
