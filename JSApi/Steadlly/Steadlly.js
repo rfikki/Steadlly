@@ -23,7 +23,7 @@ var Steadlly = Steadlly || {
          */
         get: function (name) {
             for (var i = 0 ; i < Steadlly._contracts._list.length; i++) {
-                console.log(Steadlly._contracts._list[i].name);
+                // console.log(Steadlly._contracts._list[i].name);
                 if (Steadlly._contracts._list[i].name === name) return Steadlly._contracts._list[i].object;
             }
         },
@@ -47,7 +47,7 @@ var Steadlly = Steadlly || {
                                 arrayDesc = JSON.parse(arrayDesc);
                                 Steadlly._contracts._list.push({'name': data.contracts[i].name,'object': web3.eth.contract(data.contracts[i].address, arrayDesc)});
                             }
-                            console.log(Steadlly._contracts._list)
+                           // console.log(Steadlly._contracts._list)
                         }
                     },
                     error: function (data) {
@@ -65,7 +65,7 @@ var Steadlly = Steadlly || {
         _loadModules: function (modules) {
             if (modules.indexOf('ui') != -1) {
                 Steadlly.ui = {
-                    _skills: [],
+                    _skills: ['bla'],
                     _jobs: [],
                     /***
                      * Simple method which adds a value to a textbox
@@ -158,14 +158,15 @@ var Steadlly = Steadlly || {
 
 $(document).ready(function(){
 
-    Steadlly.init('Steadlly/conf/contracts.json', ['CompanyData'], ['ui','nav']);
-    companyData = Steadlly.get('CompanyData');
+    Steadlly.init('../JSApi/Steadlly/conf/contracts.json', ['SkillDataContract'], ['ui','nav']);
+    SkillDataContract = Steadlly.get('SkillDataContract');
+    var b = SkillDataContract.addSkilltoPerson('0x87ce4fd02db79bb0dde0b39e3f2b2b9f5396c310','Cooking');
+    console.log(b);
+    Steadlly.ui.addExperience('bla','skills','skill-value');
 
-    var data = companyData.returnCompany("0xa48874c7a1a89c317c14b781120df369f9a38d93");
+    //var data = companyData.returnCompany("0xa48874c7a1a89c317c14b781120df369f9a38d93");
 
-    document.body.addEventListener('click', function(){
-    	Steadlly.nav.go('http://www.google.com');
-    });
+
 
     // EXAMPLE USAGE
     // -------------------------------------------------------------------------

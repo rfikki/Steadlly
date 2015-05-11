@@ -5,6 +5,11 @@
       "name": "CompanyData",
       "address":"0xee78f019f20bdaebdb6480beb76ed79ea635b3bb",
       "contractDescription": "[{'constant':true,'inputs':[{'name':'admID','type':'uint256'}],'name':'returnAdministrators','outputs':[{'name':'adr','type':'address'}],'type':'function'},{'constant':false,'inputs':[{'name':'cname','type':'string32'},{'name':'KVK','type':'uint256'},{'name':'phone','type':'uint256'}],'name':'createCompany','outputs':[],'type':'function'},{'constant':true,'inputs':[],'name':'returnNrAdmins','outputs':[{'name':'w','type':'uint256'}],'type':'function'},{'constant':false,'inputs':[{'name':'addr','type':'address'}],'name':'addAdmin','outputs':[],'type':'function'},{'constant':false,'inputs':[{'name':'adr','type':'uint256'}],'name':'removeAdmin','outputs':[],'type':'function'},{'constant':true,'inputs':[{'name':'adr','type':'address'}],'name':'returnCompany','outputs':[{'name':'name','type':'string32'},{'name':'own','type':'address'},{'name':'kvk','type':'uint256'},{'name':'phone','type':'uint256'}],'type':'function'}]"
+    },
+    {
+      "name": "SkillDataContract",
+      "address":"0x17619fe916c78b6634a444ff680f8558b2fd647f",
+      "contractDescription": "[{'constant':true,'inputs':[{'name':'addr','type':'address'},{'name':'skillID','type':'uint256'}],'name':'returnSkills','outputs':[{'name':'u','type':'string32'}],'type':'function'},{'constant':true,'inputs':[{'name':'addr','type':'address'}],'name':'returnNrSkills','outputs':[{'name':'n','type':'uint256'}],'type':'function'},{'constant':false,'inputs':[{'name':'addr','type':'address'},{'name':'skillname','type':'string32'}],'name':'addSkilltoPerson','outputs':[],'type':'function'}]"
     }
   ]
 
