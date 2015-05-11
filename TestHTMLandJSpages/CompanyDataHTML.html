@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+var web3 = parent.web3;
+
+var contractAddress = '0xee78f019f20bdaebdb6480beb76ed79ea635b3bb';
+
+var CompanyData = [{"constant":true,"inputs":[{"name":"admID","type":"uint256"}],"name":"returnAdministrators","outputs":
+
+[{"name":"adr","type":"address"}],"type":"function"},{"constant":false,"inputs":[{"name":"cname","type":"string32"},{"name":"KVK","type":"uint256"},
+
+{"name":"phone","type":"uint256"}],"name":"createCompany","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrAdmins","outputs":
+
+[{"name":"w","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"addr","type":"address"}],"name":"addAdmin","outputs":[],"type":"function"},
+
+{"constant":false,"inputs":[{"name":"adr","type":"uint256"}],"name":"removeAdmin","outputs":[],"type":"function"},{"constant":true,"inputs":
+
+[{"name":"adr","type":"address"}],"name":"returnCompany","outputs":[{"name":"name","type":"string32"},{"name":"own","type":"address"},{"name":"kvk","type":"uint256"},
+
+{"name":"phone","type":"uint256"}],"type":"function"}];
+
+
+
+var objectHandler = web3.eth.contract(contractAddress, CompanyData);
+
+function crtCompany(){
+
+	
+	
+	var cName = document.getElementById('companyName').value;
+	var kvk = document.getElementById('KVKnr').value;
+	var phone = document.getElementById('phoneNr').value;
+	var n = objectHandler.createCompany(cName, kvk, phone);
+	alert('Created a new company');
+
+}
+function checkNumberAdmins(){
+
+	var n = objectHandler.returnNrAdmins();
+	document.getElementById('nrAdmins').value= n.toString();
+	
+}
+
+
+function addAdministrator(){
+	var addr = document.getElementById('adminAddress').value;
+	var n = objectHandler.addAdmin(addr);
+	alert('You have added an admin for your company');
+	
+	
+}
+
+function returnAdmins(){
+	document.getElementById('admins').value ='';
+	var n = objectHandler.returnNrAdmins();
+	for (i=0; i<n;i++)
+	{
+
+		var a = objectHandler.returnAdministrators(i);
+		document.getElementById('admins').value += "ID="+i+"  "+ a.toString()+'\n';
+
+
+
+	}
+}
+
+function checkCompany(){
+	var adr = document.getElementById('companyAdr').value;
+	var n = objectHandler.returnCompany(adr);
+	document.getElementById('companyInfo').value = (n[0]+'\n'+n[1]+'\n'+n[2]+'\n'+n[3]+'\n').toString();
+	
+}
+
+function remAdmin(){
+	var id = document.getElementById('adminID').value;
+	var n = objectHandler.removeAdmin(id);
+	alert('Administrator removed!');
+}
+
+
+
+</script>
+<head>
+	<title></title>
+</head>
+<body>
+    <h1>Create Company</h1>
+   
+   <p>Company Name <input id='companyName' /></p><br>
+    <p>KVK number <input  id='KVKnr' /></p><br>
+    <p>Phone number <input id='phoneNr' /></p><br>
+   <button onclick="crtCompany()">Create Company</button> <br>
+    
+   <h1>Add admin to your company</h1>
+   <p>Address<input id='adminAddress'/></p><br>
+   <button onclick="addAdministrator()">Add Administrator</button>
+
+
+	<h1>Get number of all admins ever registered at your company</h1>
+	
+	<button onclick="checkNumberAdmins()">Check</button>
+	<p>Number of admins<input id='nrAdmins'/></p>
+
+
+	<h1>Show the administrators of your company</h1>
+	<button onclick="returnAdmins()">Show</button>
+	<p>Administrators:</p>
+	 <textarea id='admins', rows="10", cols="120"> </textarea>
+
+	 <h1>Remove administrator from company</h1>
+	 <p>Admin ID <input id='adminID'/></p><br>
+	 <button onclick="remAdmin()">Remove</button>
+
+	 <h1>Show Company With Address</h1>
+	<p>Enter Company Address<input id='companyAdr'/></p>
+	<button onclick="checkCompany()">Show</button>
+	<p>Company:</p>
+	 <textarea id='companyInfo', rows="10", cols="120"> </textarea>
+
+</body>
+
+</html>
