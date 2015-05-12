@@ -68,4 +68,12 @@ contract CompanyData
 		SAdministration a = administrators[adr];
 		delete a.addrAdmin;
 	}
+
+	function returnOwnCompany() constant returns (string32 name, address own,uint kvk,uint phone){
+		SCompany c = companies[msg.sender];
+		name = c.companyName;
+		own = c.owner;
+		kvk = c.KVKnr;
+		phone = c.phoneNumber;
+	}
 }

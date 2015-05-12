@@ -38,3 +38,16 @@ c67019a6… :returnCompany
 
 
 address: 0xee78f019f20bdaebdb6480beb76ed79ea635b3bb
+
+
+var CompanyData = web3.eth.contractFromAbi([{"constant":true,"inputs":[{"name":"admID","type":"uint256"}],"name":"returnAdministrators","outputs":[{"name":"adr","type":"address"}],"type":"function"},{"constant":false,"inputs":[{"name":"cname","type":"string32"},{"name":"KVK","type":"uint256"},{"name":"phone","type":"uint256"}],"name":"createCompany","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrAdmins","outputs":[{"name":"w","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"addr","type":"address"}],"name":"addAdmin","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"returnOwnCompany","outputs":[{"name":"name","type":"string32"},{"name":"own","type":"address"},{"name":"kvk","type":"uint256"},{"name":"phone","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"adr","type":"uint256"}],"name":"removeAdmin","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"adr","type":"address"}],"name":"returnCompany","outputs":[{"name":"name","type":"string32"},{"name":"own","type":"address"},{"name":"kvk","type":"uint256"},{"name":"phone","type":"uint256"}],"type":"function"}]);
+contract CompanyData{function returnAdministrators(uint256 admID)constant returns(address adr){}function createCompany(string32 cname,uint256 KVK,uint256 phone){}function returnNrAdmins()constant returns(uint256 w){}function addAdmin(address addr){}function returnOwnCompany()constant returns(string32 name,address own,uint256 kvk,uint256 phone){}function removeAdmin(uint256 adr){}function returnCompany(address adr)constant returns(string32 name,address own,uint256 kvk,uint256 phone){}}
+08fe601e… :returnAdministrators
+18d4b4af… :createCompany
+4fd21f57… :returnNrAdmins
+70480275… :addAdmin
+858f559f… :returnOwnCompany
+ad7bbc29… :removeAdmin
+c67019a6… :returnCompany
+
+address: 0x0e6582b96acf6bc3680df762fec4638865e4c42e
