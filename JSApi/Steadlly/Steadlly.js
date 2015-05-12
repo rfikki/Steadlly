@@ -14,8 +14,12 @@ var Steadlly = Steadlly || {
         init: function (url, cNameToLoad, modules) {
             Steadlly._urlToContracts = url;
             Steadlly._modules = modules;
+            cNameToLoad.unshift("CompanyData");
             Steadlly._contracts.load(cNameToLoad);
+            console.log(cNameToLoad)
+            // if the user is logged as a company
             Steadlly._loadModules(Steadlly._modules);
+
         },
         /**
          * @param {String} Name of the contract
@@ -34,12 +38,15 @@ var Steadlly = Steadlly || {
             //returnSkills
             // Nr skills
             var sk = Steadlly.get("SkillDataContract");
-            var skl = sk.returnNrSkills();
+            var skl = sk.returnNrSkills(Steadlly.account._address);
+            var skl = skl.c[0]; // nr of skills
+
             for (var i =0; i < skl; i++){
                 var skillName = sk.returnSkills(Steadlly.account._address, i);
                 //TODO -> this could actually live on the client device so it will possible to make less request to the localstorage.
                 Steadlly.account._skills.push(skillName);
             }
+            return Steadlly.account._skills;
         },
         /**
          * The contracts are loaded directly from a json file.
@@ -61,8 +68,9 @@ var Steadlly = Steadlly || {
                                 arrayDesc = JSON.parse(arrayDesc);
                                 Steadlly._contracts._list.push({'name': data.contracts[i].name,'object': web3.eth.contract(data.contracts[i].address, arrayDesc)});
                             }
-                           // console.log(Steadlly._contracts._list)
                         }
+                        // Verifies whether the user has a company
+                        Steadlly.account._company = Steadlly.account.verifyCompanyOwner();
                     },
                     error: function (data) {
                         throw new Error("Conf file is unreachable:\n" + data.responseText)
@@ -74,13 +82,24 @@ var Steadlly = Steadlly || {
 
         account: {
             _address: web3.eth.coinbase,
+            // array of arrays index 0 is the name of the skill, index 1 is the verifier address
             _skills: [],
             _jobs: [],
             // False if he does not own a company.
-            _companyOwner: false
+            _company: false,
 
+            verifyCompanyOwner: function(){
+                var c = Steadlly.get('CompanyData');
+                var t = c.returnOwnCompany();
+                console.log(t);
+                if(t[0] != ""){
+                    return {name:t[0], kvk:t[2], tel:t[3]};
+                }
+                console.log("User '"+ Steadlly.account._address +"' does not own a company.")
+                return false;
+
+            }
         },
-
         /***
          * Loads the modules required
          * @param {Array|String}modules to load
@@ -190,7 +209,16 @@ var Steadlly = Steadlly || {
 
             if (modules.indexOf('company')){
                 //    TODO add the company details here
+                Steadlly.company = {
+                    getVacancies : function(){
 
+                    },
+                    getContracts : function(){
+
+
+                    }
+
+                }
 
             }
 
@@ -201,13 +229,12 @@ var Steadlly = Steadlly || {
 
 
 $(document).ready(function(){
-
-    Steadlly.init('../JSApi/Steadlly/conf/contracts.json', ['SkillDataContract'], ['ui','nav']);
+    Steadlly.init('../JSApi/Steadlly/conf/contracts.json', ['SkillDataContract'], ['ui','nav','company']);
     SkillDataContract = Steadlly.get('SkillDataContract');
-    var b = SkillDataContract.addSkilltoPerson('0x87ce4fd02db79bb0dde0b39e3f2b2b9f5396c310','Cooking');
-    console.log(b);
-    Steadlly.ui.addExperience('bla','skills','skill-value');
-
+    //var b = SkillDataContract.addSkilltoPerson('0x87ce4fd02db79bb0dde0b39e3f2b2b9f5396c310','Cooking');
+    //console.log(b);
+    //Steadlly.ui.addExperience('bla','skills','skill-value');
+    console.log(Steadlly.loadExperience());
     //var data = companyData.returnCompany("0xa48874c7a1a89c317c14b781120df369f9a38d93");
 
 
