@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+var web3 = parent.web3;
+
+var contractAddress = '0x985fbb2e44871a8a5172cbf52dfe74a69e34a0c2';
+
+var PeopleData = [{"constant":true,"inputs":
+
+[{"name":"adr","type":"address"}],"name":"returnPerson","outputs":[{"name":"_adr","type":"address"},
+
+{"name":"telephone","type":"uint256"}],"type":"function"},{"constant":false,"inputs":
+
+[{"name":"telephone","type":"uint256"}],"name":"addPerson","outputs":[],"type":"function"},{"constant":true,"inputs":
+
+[],"name":"returnCurrentPerson","outputs":[{"name":"_adr","type":"address"},
+
+{"name":"telephone","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrPeople","outputs":
+
+[{"name":"n","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnCurrentAddressOnly","outputs":
+
+[{"name":"_adr","type":"address"}],"type":"function"}];
+
+
+
+var objectHandler = web3.eth.contract(contractAddress, PeopleData);
+
+function crtPerson(){
+
+	
+	
+	var telephone = document.getElementById('phoneNr').value;
+	var n = objectHandler.addPerson(telephone);
+	alert('Person created');
+
+}
+function returnPerson(){
+
+	var addr = document.getElementById('address1').value;
+	var n = objectHandler.returnPerson(addr);
+	document.getElementById('phoneNr2').value= n[1].toString();
+	
+}
+
+
+function checkCurrent(){
+	
+	var r = objectHandler.returnCurrentAddressOnly();
+	var n = objectHandler.returnCurrentPerson();
+	document.getElementById('address2').value = r.toString();
+	document.getElementById('phoneNr3').value = n[1].toString();
+	
+	
+}
+
+function checkNrPeople(){
+	
+		var a = objectHandler.returnNrPeople();
+		document.getElementById('nrPeople').value = a.toString()
+
+
+}
+
+
+
+
+
+</script>
+<head>
+	<title></title>
+</head>
+<body>
+    <h1>Create Person</h1>
+   
+   <p>Phone Number <input id='phoneNr' /></p><br>
+    
+   <button onclick="crtPerson()">Create Person</button> <br>
+    
+
+
+	<h1>Get info for person from address</h1>
+	<p>Address<input id='address1'/></p>
+	<button onclick="returnPerson()">Check</button>
+	<p>Phone number<input id='phoneNr2', disabled="disabled" /></p>
+
+
+	
+
+
+	<h1>Check my address and phone</h1>
+	<button onclick="checkCurrent()">Check</button>
+	<p>Address<input id='address2', disabled="disabled" /></p>
+	<p>Phone<input id='phoneNr3', disabled="disabled" /></p>
+
+	 <h1>Check how many people are registered</h1>
+	 
+	 <button onclick="checkNrPeople()">Check</button>
+	 <p>People registered: <input id='nrPeople'/></p><br>
+
+	 
+
+</body>
+
+</html>
