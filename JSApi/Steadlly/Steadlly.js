@@ -19,7 +19,6 @@ var Steadlly = Steadlly || {
             console.log(cNameToLoad)
             // if the user is logged as a company
             Steadlly._loadModules(Steadlly._modules);
-
         },
         /**
          * @param {String} Name of the contract
@@ -208,18 +207,52 @@ var Steadlly = Steadlly || {
             }
 
             if (modules.indexOf('company')){
-                //    TODO add the company details here
                 Steadlly.company = {
                     getVacancies : function(){
+                        var contract = Steadlly.get('VacanciesContract');
+                        var nrVacancies = contract.returnNrVacancies();
+                        var vacanciesArray = [];
+                        for(var i = 0; i < nrVacancies; i ++ ){
+                            if(contract.returnVacancy(i)[0] == Steadlly.account._address){
+                                var vacancy = {
+                                    startDate: contract.returnVacancy(i)[1],
+                                    endData : contract.returnVacancy(i)[2],
+                                    jobTitle : contract.returnVacancy(i)[3],
+                                    hoursOfWork : contract.returnVacancy(i)[4],
+                                    skills : contract.returnVacancy(i)[5].split(" "),
+                                    rules : contract.returnVacancy(i)[6],
+                                    validity : contract.returnVacancy(i)[7]
+                                }
+                                vacanciesArray.push(vacancy);
+                            }
+
+                        }
+
 
                     },
+                    // TODO similar to the above, probably to be refactored.
                     getContracts : function(){
-
-
+                        var contract = Steadlly.get('ContractContract');
+                        var nrContracts = contract.returnNrContracts();
+                        var contractsArray = [];
+                        for(var i = 0; i < nrContracts; i ++ ){
+                            console.log(contract.returnContract(i));
+                            if(contract.returnContract(i)[7] == Steadlly.account._address){
+                                var vacancy = {
+                                    employeeAdd: contract.returnContract(i)[0],
+                                    startDate: contract.returnContract(i)[1],
+                                    endData : contract.returnContract(i)[2],
+                                    jobTitle : contract.returnContract(i)[3],
+                                    hoursOfWork : contract.returnContract(i)[4],
+                                    skills : contract.returnContract(i)[5].split(" "),
+                                    rules : contract.returnContract(i)[6],
+                                    validity : contract.returnContract(i)[8]
+                                }
+                                contractsArray.push(vacancy);
+                            }
+                        }
                     }
-
                 }
-
             }
 
         }
@@ -229,7 +262,7 @@ var Steadlly = Steadlly || {
 
 
 $(document).ready(function(){
-    Steadlly.init('../JSApi/Steadlly/conf/contracts.json', ['SkillDataContract'], ['ui','nav','company']);
+    Steadlly.init('../JSApi/Steadlly/conf/contracts.json', ["ContractContract","VacanciesContract",'SkillDataContract'], ['ui','nav','company']);
     SkillDataContract = Steadlly.get('SkillDataContract');
     //var b = SkillDataContract.addSkilltoPerson('0x87ce4fd02db79bb0dde0b39e3f2b2b9f5396c310','Cooking');
     //console.log(b);
@@ -237,6 +270,13 @@ $(document).ready(function(){
     console.log(Steadlly.loadExperience());
     //var data = companyData.returnCompany("0xa48874c7a1a89c317c14b781120df369f9a38d93");
 
+
+    $('.head-text').click(function(){
+
+        Steadlly.company.getContracts();
+        //console.log("click")
+
+    });
 
 
     // EXAMPLE USAGE

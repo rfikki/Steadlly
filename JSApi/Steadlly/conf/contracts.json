@@ -10,7 +10,18 @@
       "name": "SkillDataContract",
       "address":"0x5f6d36e42e35cb96a5ec36153e6f6f0535ee0232",
       "contractDescription": "[{'constant':true,'inputs':[{'name':'addr','type':'address'},{'name':'skillID','type':'uint256'}],'name':'returnSkills','outputs':[{'name':'u','type':'string32'},{'name':'w','type':'address'}],'type':'function'},{'constant':true,'inputs':[{'name':'addr','type':'address'}],'name':'returnNrSkills','outputs':[{'name':'n','type':'uint256'}],'type':'function'},{'constant':false,'inputs':[{'name':'addr','type':'address'},{'name':'skillname','type':'string32'}],'name':'addSkilltoPerson','outputs':[],'type':'function'}]"
+    },
+    {
+    "name": "VacanciesContract",
+    "address":"0x3508be1c3de4d96df62c677c4279fa92433e402b",
+    "contractDescription": "[{'constant':false,'inputs':[{'name':'vacancyID','type':'uint256'}],'name':'InvalidateVacancy','outputs':[],'type':'function'},{'constant':true,'inputs':[{'name':'vacancyID','type':'uint256'}],'name':'showNrOfApplicants','outputs':[{'name':'n','type':'uint256'}],'type':'function'},{'constant':true,'inputs':[],'name':'returnNrVacancies','outputs':[{'name':'r','type':'uint256'}],'type':'function'},{'constant':true,'inputs':[{'name':'vacancyID','type':'uint256'},{'name':'applicantID','type':'uint256'}],'name':'showApplicantsAddress','outputs':[{'name':'q','type':'address'}],'type':'function'},{'constant':false,'inputs':[{'name':'startDate','type':'string32'},{'name':'endDate','type':'string32'},{'name':'jobTitle','type':'string32'},{'name':'hoursOfWork','type':'string32'},{'name':'skills','type':'string32'},{'name':'rules','type':'string32'}],'name':'newVacancy','outputs':[{'name':'vacancyID','type':'uint256'}],'type':'function'},{'constant':true,'inputs':[{'name':'vacancyID','type':'uint256'}],'name':'returnVacancy','outputs':[{'name':'i','type':'address'},{'name':'w','type':'string32'},{'name':'e','type':'string32'},{'name':'r','type':'string32'},{'name':'t','type':'string32'},{'name':'y','type':'string32'},{'name':'u','type':'string32'},{'name':'o','type':'bool'}],'type':'function'},{'constant':false,'inputs':[{'name':'vacancyID','type':'uint256'}],'name':'ApplyForVacancy','outputs':[],'type':'function'}]"
+    },
+    {
+      "name": "ContractContract",
+      "address":"0x545fd95308230e9f0cf970b4cd8677bc1089e875",
+      "contractDescription": "[{'constant':true,'inputs':[{'name':'contractID','type':'uint256'}],'name':'returnContract','outputs':[{'name':'q','type':'address'},{'name':'w','type':'string32'},{'name':'e','type':'string32'},{'name':'r','type':'string32'},{'name':'t','type':'string32'},{'name':'y','type':'string32'},{'name':'u','type':'string32'},{'name':'i','type':'address'},{'name':'o','type':'bool'}],'type':'function'},{'constant':false,'inputs':[{'name':'employee','type':'address'},{'name':'startDate','type':'string32'},{'name':'endDate','type':'string32'},{'name':'jobTitle','type':'string32'},{'name':'hoursOfWork','type':'string32'},{'name':'skills','type':'string32'},{'name':'rules','type':'string32'}],'name':'newContract','outputs':[{'name':'contractID','type':'uint256'}],'type':'function'},{'constant':false,'inputs':[{'name':'contractID','type':'uint256'}],'name':'DestroyContract','outputs':[],'type':'function'},{'constant':true,'inputs':[{'name':'contractID','type':'uint256'}],'name':'ChechContractStatus','outputs':[{'name':'retVal','type':'bool'}],'type':'function'},{'constant':true,'inputs':[],'name':'returnNrContracts','outputs':[{'name':'r','type':'uint256'}],'type':'function'},{'constant':false,'inputs':[{'name':'contractID','type':'uint256'}],'name':'SignContract','outputs':[],'type':'function'}]"
     }
+    
   ]
 
 }
