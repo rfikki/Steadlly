@@ -11,7 +11,7 @@ var Steadlly = Steadlly || {
          * @param {Array|String} cNameToLoad Names of the contracts to load.
          * @param {Array|String} Modules to be loaded.
          */
-        init: function (url, cNameToLoad, modules) {
+        init: function (url, cNameToLoad, modules){
             Steadlly._urlToContracts = url;
             Steadlly._modules = modules;
             cNameToLoad.unshift("CompanyData");
@@ -208,12 +208,15 @@ var Steadlly = Steadlly || {
 
             if (modules.indexOf('company')){
                 Steadlly.company = {
-                    getVacancies : function(){
+                    getVacancies : function(alternativeAddress){
                         var contract = Steadlly.get('VacanciesContract');
                         var nrVacancies = contract.returnNrVacancies();
                         var vacanciesArray = [];
                         for(var i = 0; i < nrVacancies; i ++ ){
-                            if(contract.returnVacancy(i)[0] == Steadlly.account._address){
+                            var addr = Steadlly.account._address;
+                            // If no alternative address has been set then take the sender.
+                            alternativeAddress ? addr = alternativeAddress : addr = addr;
+                            if(contract.returnVacancy(i)[0] == addr){
                                 var vacancy = {
                                     startDate: contract.returnVacancy(i)[1],
                                     endData : contract.returnVacancy(i)[2],
@@ -224,14 +227,17 @@ var Steadlly = Steadlly || {
                                     validity : contract.returnVacancy(i)[7]
                                 }
                                 vacanciesArray.push(vacancy);
+                                console.log(vacanciesArray);
                             }
 
                         }
 
+                        return vacanciesArray;
+
 
                     },
                     // TODO similar to the above, probably to be refactored.
-                    getContracts : function(){
+                    getContracts : function(alternativeAddress){
                         var contract = Steadlly.get('ContractContract');
                         var nrContracts = contract.returnNrContracts();
                         var contractsArray = [];
@@ -262,21 +268,21 @@ var Steadlly = Steadlly || {
 
 
 $(document).ready(function(){
-    Steadlly.init('../JSApi/Steadlly/conf/contracts.json', ["ContractContract","VacanciesContract",'SkillDataContract'], ['ui','nav','company']);
-    SkillDataContract = Steadlly.get('SkillDataContract');
+    //Steadlly.init('../JSApi/Steadlly/conf/contracts.json', ["ContractContract","VacanciesContract",'SkillDataContract'], ['ui','nav','company']);
+    //SkillDataContract = Steadlly.get('SkillDataContract');
     //var b = SkillDataContract.addSkilltoPerson('0x87ce4fd02db79bb0dde0b39e3f2b2b9f5396c310','Cooking');
     //console.log(b);
     //Steadlly.ui.addExperience('bla','skills','skill-value');
-    console.log(Steadlly.loadExperience());
+    //console.log(Steadlly.loadExperience());
     //var data = companyData.returnCompany("0xa48874c7a1a89c317c14b781120df369f9a38d93");
 
 
-    $('.head-text').click(function(){
-
-        Steadlly.company.getContracts();
-        //console.log("click")
-
-    });
+    //$('.head-text').click(function(){
+    //
+    //    Steadlly.company.getContracts();
+    //    //console.log("click")
+    //
+    //});
 
 
     // EXAMPLE USAGE
