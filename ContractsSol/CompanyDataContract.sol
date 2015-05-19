@@ -7,6 +7,8 @@ contract CompanyData
 		uint KVKnr;
 		uint phoneNumber;
 		uint nrAdmins;
+		bool verified;
+		string32 creationDate;
 	}
 
 	struct SAdministration
@@ -30,7 +32,17 @@ contract CompanyData
 		c.nrAdmins++;
 		SAdministration a = administrators[c.nrAdmins-1];
 		a.addrAdmin = msg.sender;
+		c.verified = false;
+	}
 
+
+	function verifyCompany(address companyAddress, string32 creationDate){
+		address oracle = 0x7bd8e81447b673b7182ea82a6346a8dbe3df7274;
+		if(msg.sender == oracle){
+			SCompany c = companies[companyAddress];
+			c.verified = true;
+			c.creationDate = creationDate;
+		}
 
 	}
 

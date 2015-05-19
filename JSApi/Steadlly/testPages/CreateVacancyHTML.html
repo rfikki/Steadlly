@@ -35,6 +35,9 @@ var CreateVacancy = [{"constant":false,"inputs":[{"name":"vacancyID","type":"uin
 
 var objectHandler = web3.eth.contract(contractAddress, CreateVacancy);
 
+var workers = new Worker("worker.js");
+
+
 function createNewVacancy(){
 
 	
@@ -89,15 +92,14 @@ function checkVacancy(){
 function ShowAllVacancies(){
 	document.getElementById('vacancyInfo3').value ='';
 	var n = objectHandler.returnNrVacancies();
-	for (i=0; i<n;i++)
-	{
-		var a = objectHandler.returnVacancy(i);
-		document.getElementById('vacancyInfo3').value +="VacancyID="+i+"  "+ ('The Company under the following address: '+a[0]+' has opened a vacancy from '+a[1]+' until '+a[2]+' for the position of  '+a[3]+' with the amount of working hours: '+a[4]+' and during his stay at the company he will aquire the following skills:'+a[5]+' under the following rules: '+a[6]+'  Vacancy valid: '+a[7]).toString()+'\n'+'-------------------------------------'+'\n';
-
+		for (i=0; i<n;i++)
+		{
+			var a = objectHandler.returnVacancy(i);
+	    }
+			
 
 
 	}
-}
 
 function addSkill(){
 

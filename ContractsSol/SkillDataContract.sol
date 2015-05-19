@@ -8,7 +8,6 @@ contract SkillDataContract
 	struct SSkill
 	{
 		string32 skillName;
-		address verifier;
 	}
 	
   
@@ -26,7 +25,6 @@ contract SkillDataContract
 		p.nrSkills++;
 		SSkill s = skills[p.nrSkills-1];
 		s.skillName = skillname;
-		s.verifier = msg.sender;
 		
 
 		}
@@ -37,11 +35,10 @@ contract SkillDataContract
 
 	}	
 
-	function returnSkills(address addr,uint skillID) constant returns (string32 u, address w ){
+	function returnSkills(address addr,uint skillID) constant returns (string32 u ){
 		SPerson p = people[addr];
 		SSkill s = skills[skillID];
 		u = s.skillName;
-		w = s.verifier;
 
 	}
-}	
+}
