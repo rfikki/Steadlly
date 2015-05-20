@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+   
+        <section class="container-fluid">
+            <figure class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                <img class="company-logo" src="images/laag-6.jpg" />
+            </figure>
+            <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center slogan">ALL AROUND WEBDEVELOPER</h2>
+        </section>
+        <section class="container-fluid maps">
+            <div id="map"></div>
+        </section>
+            <section class="container-fluid">
+                <article class="col-lg-6 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-12 col-sm-offset-0">
+                    <h2 class="small-text">Job description</h2>
+                    <p>
+                        Successful companies are created by people with dreams, ambition and vision. Greenhouse Group invests in these people and offers them the means and knowledge to realise those dreams.
+                    </p>
+                    <P>
+                        By investing in talent and good ideas, Greenhouse Group has grown into the umbrella organisation for six innovative and trend-setting companies in the digital marketing field. Innovation, Dedication and Fun are the core values which are carried out daily by us and our 150+ dedicated experts.
+                    </p>
+                </article>
+            </section>
+            <section class="container-fluid">
+                <article class="col-lg-6 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-12 col-sm-offset-0 contact">
+                    <h2 class="small-text">skills  <i>(Skills which are needed to work the job, these skills are verified by the company afterwards)</i></h2>
+
+                    <div class="display vacancies">
+                        <span class="pull-left" >html5</span>
+                        <span class="pull-left" >html5</span>
+                        <span class="pull-left" >html5</span>
+                        <span class="pull-left" >html5</span>
+                        <span class="pull-left" >html5</span>
+                    </div>
+                </article>
+            </section>
+            <section class="container-fluid">
+                <article class="col-lg-6 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-12 col-sm-offset-0">
+                    <h2 class="small-text">What we offer</h2>
+                    <p>
+                        Successful companies are created by people with dreams, ambition and vision. Greenhouse Group invests in these people and offers them the means and knowledge to realise those dreams.
+                        By investing in talent and good ideas, Greenhouse Group has grown into the umbrella organisation for six innovative and trend-setting companies
+                    </p>
+                </article>
+            </section>
+            <section class="container-fluid">
+                <button class="button big">apply now</button>
+            </section>
+    <footer></footer>
+        </div>
+    <script>
+        if($('#map').length > 0){
+            var canvas = document.getElementById('map');
+            newMarkers = [
+                ['De Emmasingel 25, Eindhoven', 53.212230, 6.559528]
+            ];
+
+            //creates map options
+            var center = new google.maps.LatLng(newMarkers[0][1], newMarkers[0][2]);
+            directionsDisplay = new google.maps.DirectionsRenderer();
+            var myOptions = {
+                zoom: 18,
+                disableDefaultUI: true,
+                scrollwheel: false,
+                navigationControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                draggable: false,
+                center: center
+            };
+
+
+            var map = new google.maps.Map(canvas,myOptions);
+            //adds direction renderer to google maps
+
+
+            //adds marker point to map
+            for( i = 0; i < newMarkers.length; i++ ) {
+                var position = new google.maps.LatLng(newMarkers[i][1], newMarkers[i][2]);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: newMarkers[i][0],
+                    icon: "images/marker.png"
+                });
+            }
+
+
+        }
+    </script>
+    </body>
+</html>
