@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+   
+        <section class="container-fluid">
+            <figure class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+                <img class="company-logo" src="images/laag-6.jpg" />
+            </figure>
+            <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center slogan">INNOVATION, DEDICATION, FUN</h2>
+        </section>
+        <section class="container-fluid maps hidden-xs">
+            <div id="map"></div>
+            <div class="facts">
+                <div  class="col-lg-1 col-md-1 col-sm-1 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+                    <span class="key">founded</span>
+                    <span class="value">2007</span>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-lg-offset-0">
+                    <span class="key">acg age</span>
+                    <span class="value">26</span>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-lg-offset-0">
+                    <span class="key">employees</span>
+                    <span class="value">150</span>
+                </div>
+            </div>
+        </section>
+            <section class="container-fluid">
+                <article class="col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <h2 class="small-text">about us</h2>
+                    <p>
+                        Successful companies are created by people with dreams, ambition and vision. Greenhouse Group invests in these people and offers them the means and knowledge to realise those dreams.
+                    </P>
+                    <P>
+                        By investing in talent and good ideas, Greenhouse Group has grown into the umbrella organisation for six innovative and trend-setting companies in the digital marketing field. Innovation, Dedication and Fun are the core values which are carried out daily by us and our 150+ dedicated experts.
+                    </p>
+                </article>
+            </section>
+            <section class="container-fluid">
+                <article class="col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 contact">
+                    <h2 class="small-text">contact us</h2>
+                    <ul class="col-lg-6 col-md-6- col-sm-6">
+                        <li>De Admirant</li>
+                        <li>De Emmasingel 25</li>
+                        <li>5611 AZ Eindhoven</li>
+                        <li>The NetherVlands</li>
+                    </ul>
+                    <ul  class="col-lg-6 col-md-6 col-sm-6">
+                        <li>Tel: <a href="">+31 (0)40 23 52 121</a></li>
+                        <li>E-mail:  <a href="mailto:info@greenhousegroup.com">info@greenhousegroup.com</a></li>
+                    </ul>
+                </article>
+            </section>
+            <section class="container-fluid">
+                <article class="col-lg-6 col-md-6 col-sm-6 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 vacancies">
+                    <h2 class="small-text">vacancies</h2>
+                    <ul class="pull-left">
+                        <li><a href="vacancy-page.html">all around webdeveloper</a></li>
+                        <li><a href="vacancy-page.html">Interaction designer</a></li>
+                        <li><a href="vacancy-page.html">data analyst</a></li>
+                        <li><a href="vacancy-page.html">web designer</a></li>
+                        <li><a href="vacancy-page.html">web designer</a></li>
+                    </ul>
+                </article>
+            </section>
+    <footer></footer>
+        </div>
+    <script>
+        if($('#map').length > 0){
+            var canvas = document.getElementById('map');
+            newMarkers = [
+                ['De Emmasingel 25, Eindhoven', 53.212230, 6.559528]
+            ];
+
+            //creates map options
+            var center = new google.maps.LatLng(newMarkers[0][1], (newMarkers[0][2] - 0.0020));
+            directionsDisplay = new google.maps.DirectionsRenderer();
+            var myOptions = {
+                zoom: 18,
+                disableDefaultUI: true,
+                scrollwheel: false,
+                navigationControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                draggable: false,
+                center: center
+            };
+
+
+            var map = new google.maps.Map(canvas,myOptions);
+            //adds direction renderer to google maps
+
+
+            //adds marker point to map
+            for( i = 0; i < newMarkers.length; i++ ) {
+                var position = new google.maps.LatLng(newMarkers[i][1], newMarkers[i][2]);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: newMarkers[i][0],
+                    icon: "images/marker.png"
+                });
+            }
+
+
+        }
+    </script>
+    </body>
+</html>
