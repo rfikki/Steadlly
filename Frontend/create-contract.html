@@ -16,7 +16,10 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="<?php bloginfo('template_url'); ?>/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 
     <link href="css/main.css" rel="stylesheet">
 
@@ -31,32 +34,56 @@
                 <li id="profile">profile</li>
                 <li id="settings">settings</li>
             </ul>
+            <div class="settings-menu">
+                <h2 class="head-text">account</h2>
+                <div>
+                    <span class="personal">personal</span>
+                    <span class="company active">buisness</span>
+                    <span class="slide"></span>
+                </div>
+                <div>
+                    <a href="#" class="button green">manage admins</a>
+                </div>
+
+            </div>
         </nav>
+        <div class="col-lg-6 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-2 col-xs-12 col-xs-offset-0 search-holder">
+            <input class="col-lg-8 col-md-8 col-sm-8 col-xs-12" type="text" placeholder="search..">
+            <ul class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <li><a href="#"><img src="images/laag-6.jpg"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
+                <li><a href="#"><img src="images/laag-6.jpg"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
+                <li><a href="#"><img src="images/laag-6.jpg"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
+                <li><a href="#"><img src="images/laag-6.jpg"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
+                <li><a href="#"><img src="images/laag-6.jpg"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
+            </ul>
+        </div>
     </header>
     <section class="container-fluid">
         <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-0 head-group">
-                <h2 class="head-text">company name</h2>
-                <span class="circle"></span>
-                <h3 class="head-text">Greenhouse Group</h3>
-            </div>
             <article class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-0">
-                <form id='createContract'>
+                <h2 class="head-text">Create contract</h2>
+                <form>
                     <div class="col-lg-5 col-md-8 col-sm-10 col-xs-12">
                         <div class="row">
-                            <label><h2 class="head-text">Target Address</h2></label>
-                            <input type="text" id="contract-title" name="contract-title" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="The targets account address e.g 0x1a2b3c4d5e6f7g8h9i10j..." />
+                            <label><h2 class="head-text">Employee Address</h2></label>
+                            <input type="text" id="contract-address" name="contract-address" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="What is the job title" />
 
-                            <label><h2 class="head-text">Hours of work</h2></label>
-                            <input type="text" id="contract-hours" name="contract-hours" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="Amount of contract hours" />
-
-                            <label><h2 class="head-text">Company rules</h2></label>
-                            <input type="text" id="contract-rules" name="contract-rules" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="What are important company rules" />
+                            <label><h2 class="head-text">job title</h2></label>
+                            <input type="text" id="contract-title" name="contract-title" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="What is the job title" />
 
                             <label><h2 class="head-text">Job description</h2></label>
                             <textarea class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " name="contract-desc" id="contract-desc" placeholder="What is the job about"></textarea>
 
-                            <label><h2 class="head-text">Skills</h2></label>
+                            <label><h2 class="head-text">Start date</h2></label>
+                            <input type="text" id="contract-start" name="contract-start" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="Amount of contract hours" />
+
+                            <label><h2 class="head-text">End date</h2></label>
+                            <input type="text" id="contract-end" name="contract-end" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="Amount of contract hours" />
+
+                            <label><h2 class="head-text">Hours of work</h2></label>
+                            <input type="text" id="contract-hours" name="contract-hours" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="Amount of contract hours" />
+
+                           <label><h2 class="head-text">Skills</h2></label>
                             <p>
                                 What skills are needed to successfully do the job.
                             </p>
@@ -66,6 +93,9 @@
                                 <span>html<button>x</button></span>
                             </div>
                             <input type="hidden" id="contract-skill-value" name="contract-skill-value" />
+
+                            <label><h2 class="head-text">Company rules</h2></label>
+                            <input type="text" id="contract-rules" name="contract-rules" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="What are important company rules" />
 
                             <input type="submit" class="button" value="create contract" name="contract-create" id="contract-create" />
                         </div>
@@ -77,6 +107,12 @@
     <a class="button" href="employer-profile.html">profile</a>
     <footer></footer>
 </div>
+<script type="text/javascript">
+    $(function() {
+        $( "#vacancy-start, #contract-start" ).datepicker();
+        $( "#vacancy-end, #contract-end" ).datepicker();
+    });
+
+</script>
 </body>
-<script type="text/javascript" src="js/CreateContract.js"></script>
 </html>

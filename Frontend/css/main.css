@@ -58,6 +58,12 @@ nav{
 .search-holder{
     position:absolute;
     top:0;
+    display: none;
+    z-index: 1;
+}
+
+.search-holder.see{
+    display: block;
 }
 
 .search-holder > input{
@@ -113,6 +119,97 @@ nav{
 
 .search-holder a .place{
     color:#309ed9;
+}
+
+.settings-menu{
+    position: absolute;
+    display: none;
+    right: 0;
+    margin-top: 34px;
+    background-color: #fafafa;
+    height: 230px;
+    width: 300px;
+    box-shadow:0px 0px 2px 0px rgba(0, 0, 0, 0.45);
+}
+
+.settings-menu.see{
+    display: block;
+}
+
+.settings-menu h2.head-text{
+    margin: 20px 15px 0;
+}
+
+.settings-menu > div{
+    width:200px;
+    height: 50px;
+    position: relative;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 10px 15px;
+    font-weight:300;
+
+}
+
+.settings-menu > div:first-of-type{
+    background-color: #ffffff;
+    font-size: 15px;
+}
+
+.settings-menu > div > .button{
+    width:100%;
+    margin-top:10px;
+}
+
+.settings-menu > div > span.active{
+    color:#fff;
+}
+
+.settings-menu .slider{
+    position: relative;
+    display: table;
+    width: 200px;
+    height: 50px;
+    background-color: #FFFFFF;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 16px;
+    margin: 20px 15px;
+
+}
+
+.settings-menu .personal{
+    width: 100px;
+    position: absolute;
+    left: 0;
+    height: 50px;
+    text-align: center;
+    z-index: 1;
+    line-height: 3.4;
+    color: #000;
+    cursor:pointer;
+}
+
+.settings-menu .company{
+    width: 100px;
+    position: absolute;
+    right: 0;
+    height: 50px;
+    text-align: center;
+    z-index: 1;
+    cursor:pointer;
+    line-height: 3.4;
+}
+
+.settings-menu .slide{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 100px;
+    height: 50px;
+    background-color: #2fc978;
+    z-index: 0;
 }
 
 blockquote{
@@ -220,7 +317,14 @@ li#settings{
     margin-top:50px;
 }
 
-.vacancy-overview .head-text{
+.head-text > span.expand{
+    display: inline-block;
+    color: #309ed9;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.vacancy-overview .head-text, .admin .head-text{
     margin-top:15px;
     margin-right:15px;
 }
@@ -306,7 +410,7 @@ h2 > i{
 
 .button.green{
     color:#2fc978;
-    border-color: #2fc978;;
+    border-color: #2fc978;
     -webkit-animation: none;
     -moz-animation: none;
     -ms-animation: none;
@@ -317,6 +421,21 @@ h2 > i{
 .button.green:hover{
     border-color: #2bb166;
     color:#2bb166;
+}
+
+.button.red{
+    color:#e74c3c;
+    border-color: #e74c3c;
+    -webkit-animation: none;
+    -moz-animation: none;
+    -ms-animation: none;
+    -o-animation: none;
+    animation: none;
+}
+
+.button.red:hover{
+    border-color: #c0392b;
+    color:#c0392b;
 }
 
 .button-wrap{
@@ -333,7 +452,7 @@ a.button:visited{
     color: #309ed9;
 }
 
-.button:not(.green):hover, .upload-field:hover span.button{
+.button:not(.green):not(.red):hover, .upload-field:hover span.button{
     text-decoration: none;
     -webkit-animation: button 0.2s ease forwards;
     -moz-animation: button 0.2s  ease forwards;
@@ -351,13 +470,18 @@ a.button:active{
     padding: 0 8px;
 }
 
-.vacancy-overview .button{
+.vacancy-overview .button, .admin .button{
     font-size:16px;
     padding:0 8px;
     margin:15px 15px 20px 0px;
 }
 
-.vacancy-overview li .button{
+.admin  li .button{
+    display: block;
+    width: 140px;
+}
+
+.vacancy-overview li .button, .admin li .button{
     margin:5px 15px 10px 0px;
 }
 
@@ -566,7 +690,7 @@ form .company-sidebar input{
     text-decoration: none;
 }
 
-.vacancy-overview .row{
+.vacancy-overview .row, .admin .row{
     margin-bottom:40px;
     clear:both;
 
@@ -576,15 +700,32 @@ form .company-sidebar input{
     margin-bottom:5px;
 }
 
+.admin li{
+    margin-bottom:20px;
+    padding: 0;
+}
 
-.vacancy-overview li > span {
+
+.vacancy-overview li > span, .admin li > span{
     display: block;
     font-weight: 400;
     text-transform: uppercase;
     font-size: 16px;
 }
 
+.ui-datepicker .ui-datepicker-header {
+    background: #309ED9;
+    color: #fff;
+}
 
+.box-tap{
+    cursor:pointer;
+    color:#309ED9;
+}
+
+.box{
+
+}
 
 footer{
     position: absolute;
@@ -593,6 +734,28 @@ footer{
     width: 100%;
     height: 10px;
     background-color: #309ed9;
+}
+
+.alert{
+    position: absolute;
+    max-width:700px;
+    top: 200px;
+    left: 50%;
+    transform:translateX(-50%);
+    background-color: #FAFAFA;
+    z-index: 2;
+    padding: 40px 40px 30px 40px;
+    box-shadow: 0px 0px 1px 0px #000000;
+}
+
+.alert .head-text{
+    margin-top: 0;
+}
+
+.alert button{
+    margin-left: 15px;
+    margin-top: 30px;
+    float: right;
 }
 
 
@@ -696,6 +859,12 @@ footer{
 
 
 @media (min-width: 768px){
+
+    .alert{
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+    }
 
     .head-group > * {
         display: inline-block;

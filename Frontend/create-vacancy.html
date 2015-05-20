@@ -11,16 +11,16 @@
     <link rel="stylesheet" href="css/reset.css">
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="css/HelveticaNeueLTStd-Cn.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="<?php bloginfo('template_url'); ?>/bootstrap/js/bootstrap.min.js"></script>
-
-    <!---->
-    <script type="text/javascript" src="../JSApi/Steadlly/Steadlly.js"></script>
-    <script type="text/javascript" src="js/CreateVacancy.js"></script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 
     <link href="css/main.css" rel="stylesheet">
 
@@ -45,7 +45,7 @@
                 <h3 class="head-text">Greenhouse Group</h3>
             </div>
             <article class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-0">
-                <form name="saveVacancy" id="createVacancy">click
+                <form>
                     <div class="col-lg-5 col-md-8 col-sm-10 col-xs-12">
                         <div class="row">
                             <label><h2 class="head-text">job title</h2></label>
@@ -54,14 +54,11 @@
                             <label><h2 class="head-text">Job description</h2></label>
                             <textarea class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " name="vacancy-desc" id="vacancy-desc" placeholder="What is the job about"></textarea>
 
-                            <label><h2 class="head-text">What we offer</h2></label>
-                            <textarea class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " name="vacancy-offer" id="vacancy-offer" placeholder="What do you offer you employees"></textarea>
+                            <label><h2 class="head-text">Start date</h2></label>
+                            <input type="text" id="vacancy-start" name="vacancy-start" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="Amount of contract hours" />
 
-                            <label><h2 class="head-text">contact email</h2></label>
-                            <input type="url" id="vacancy-contact" name="vacancy-contact" class="col-lg-12 col-md-12 col-sm-12 col-xs-12  clearfix" placeholder="What is the contact's email" />
-
-                            <label><h2 class="head-text">contact phone</h2></label>
-                            <input type="email" id="vacancy-phone" name="vacancy-phone" class="col-lg-12 col-md-12 col-sm-12 col-xs-12  clearfix" placeholder="What is the contact's phone number" />
+                            <label><h2 class="head-text">End date</h2></label>
+                            <input type="text" id="vacancy-end" name="vacancy-end" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="Amount of contract hours" />
 
                             <label><h2 class="head-text">Skills</h2></label>
                             <p>
@@ -74,6 +71,9 @@
                             </div>
                             <input type="hidden" id="vacancy-skill-value" name="vacancy-skill-value" />
 
+                            <label><h2 class="head-text">Rules</h2></label>
+                            <input type="text" id="vacancy-rules" name="vacancy-rules" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" placeholder="What are the most important company rules" />
+
                             <input type="submit" class="button" value="create vacancy" name="vacancy-create" id="vacancy-create" />
                         </div>
                     </div>
@@ -84,6 +84,12 @@
     <a class="button" href="employer-profile.html">profile</a>
     <footer></footer>
 </div>
+<script type="text/javascript">
+    $(function() {
+        $( "#vacancy-start, #contract-end" ).datepicker();
+        $( "#vacancy-end, #contract-end" ).datepicker();
+    });
+
+</script>
 </body>
-    <script type="text/javascript" src="js/CreateVacancy.js"></script>
 </html>
