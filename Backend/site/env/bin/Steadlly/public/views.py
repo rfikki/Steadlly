@@ -5,36 +5,59 @@ from django.contrib import auth
 from django.http import HttpResponse
 from django.core.context_processors import csrf
 
+baseTitle = "Steaddly :: "
 
 # Create your views here.
 def index_view(request):
+    title = baseTitle + "Index "
+    context = { "title" : title }
     template = loader.get_template('public/index.html')
-    return HttpResponse(template.render())
+    return HttpResponse(template.render(context))
 
 
 def create_contract_view(request):
-
-    template = loader.get_template('public/create_contract.html')
-    return HttpResponse(template.render())
+    title = baseTitle + "Create contract "
+    context = { "title" : title }
+    template = loader.get_template('public/contract_create.html')
+    return HttpResponse(template.render(context))
 
 
 def create_vacancy_view(request):
-    template = loader.get_template('public/create_vacancy.html')
-    return HttpResponse(template.render())
+    title = baseTitle + "Create vacancy "
+    context = { "title" : title }
+    template = loader.get_template('public/vacancy_create.html')
+    return HttpResponse(template.render(context))
 
 
 def add_employee(request):
-    template = loader.get_template('public/add_user.html')
-    return HttpResponse(template.render())
+    title = baseTitle + "Add employee"
+    context = { "title" : title }
+    template = loader.get_template('public/user_add.html')
+    return HttpResponse(template.render(context))
 
 
 def add_company_kvk(request):
-    template = loader.get_template('public/add_company_kvk.html')
-    return HttpResponse(template.render())
+    title = baseTitle + "Add complany kvk "
+    context = { "title" : title }
+    template = loader.get_template('public/company_add_kvk.html')
+    return HttpResponse(template.render(context))
 
 
 def add_company_phone(request):
-    template = loader.get_template('public/add_company_phone.html')
-    return HttpResponse(template.render())
+    title = baseTitle + "Add company phone "
+    context = { "title" : title }
+    template = loader.get_template('public/company_phone_add.html')
+    return HttpResponse(template.render(context))
 
+def view_employee(request):
+    title = baseTitle + "Employee profile "
+    context = { "title" : title }
+    template = loader.get_template('public/employee_profile.html')
+    return HttpResponse(template.render(context))
+
+def edit_employee(request):
+    title = baseTitle + "Edit employee profile "
+    context = { "title" : title }
+    template = loader.get_template('public/employee_profile_edit.html')
+    return HttpResponse(template.render(context))
 
