@@ -13,7 +13,6 @@ def index_view(request):
 
 
 def create_contract_view(request):
-
     template = loader.get_template('public/create_contract.html')
     return HttpResponse(template.render())
 
