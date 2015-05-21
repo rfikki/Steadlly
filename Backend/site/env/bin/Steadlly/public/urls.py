@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^add/company/verify/phone/$', views.add_company_phone, name="add-company-phone"),
     # Create
     url(r'^create/contract/$', views.create_contract_view, name="create-vacancy"),
+    url(r'^employee/$', views.view_employee, name="view-employee"),
+    url(r'^employee/edit/$', views.edit_employee, name="edit-employee"),
 
 ]
 
