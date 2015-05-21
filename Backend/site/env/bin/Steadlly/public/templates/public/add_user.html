@@ -1,25 +1,24 @@
-<!DOCTYPE html>
-<html>
-   
+{% extends "base/header.html" %}
+
+{% block content %}
         <section class="container-fluid">
             <div class="row">
                 <article class="col-lg-4 col-md-6 col-sm-8 col-xs-12 col-lg-push-2 col-md-push-2 col-sm-push-2 col-xs-push-0">
-                    <h2 class="head-text"><label for="user-phone">kvk number</label></h2>
+                    <h2 class="head-text"><label for="user-phone">phone number</label></h2>
                     <p>
-                        To verify the existence of your company and the validity of the users request please fill in your KVK number. A SMS will be send tot the companies phone with a verification code.
-                        <i>The phone number is acquired by the using the local phone book</i>
+                        If you want we can store you phone number. Your phone number will only be used during a request for account retrival.
+                        <i>Leave the textfield blank and press save if you don’t want to store you phone number</i>
                     </p>
                     <form class="one-field-form">
                         <div class="form-container">
                             <input class="col-lg-12 col-md-12 col-sm-12 col-xs-12" type="tel" name="user-phone" id="user-phone">
-                            <input type="submit" value="check" id="employer-kvk" name="employer-kvk" />
+                            <input type="submit" value="save" id="employee-phone" name="employee-phone" />
                         </div>
                     </form>
                 </article>
             </div>
         </section>
-        <a class="button" href="employer-phone.html">phone</a>
+        <a class="button" href="employee-edit-profile.html">profile</a>
         <footer></footer>
     </div>
-    </body>
-</html>
+{% endblock %}

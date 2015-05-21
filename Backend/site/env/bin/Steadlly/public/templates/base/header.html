@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,22 +8,21 @@
     <meta property="og:title" content="Leuveliek. - Wil jij leuke handgemaakte sieraden?"/>
     <meta property="og:image" content="http://www.leuveliek.nl/images/leuveliek.jpg"/>
     <!-- INTROLOADER -->
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="{% static 'base/css/reset.css' %}">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/HelveticaNeueLTStd-Cn.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link href="{% static 'base/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'base/css/HelveticaNeueLTStd-Cn.css' %}">
+    <link rel="stylesheet" href="{% static 'base/bootstrap/css/bootstrap.min.css' %}" >
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
     <script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{% static 'base/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'base/js/main.js' %}"></script>
 
-    <link href="css/main.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="<?php bloginfo('template_url'); ?>/bootstrap/js/bootstrap.min.js"></script>
+    <link href="{% static 'base/css/main.css' %}" rel="stylesheet">
+    <script src="{% static 'base/bootstrap/js/bootstrap.min.js' %}"></script>
 
 </head>
 <body class="register">
@@ -38,8 +38,8 @@
             <div class="settings-menu">
                 <h2 class="head-text">account</h2>
                 <div>
-                    <span class="personal">personal</span>
-                    <span class="company active">buisness</span>
+                    <span class="personal">Personal</span>
+                    <span class="company active">Business</span>
                     <span class="slide"></span>
                 </div>
                 <div>
@@ -51,15 +51,19 @@
         <div class="col-lg-6 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-2 col-xs-12 col-xs-offset-0 search-holder">
             <input class="col-lg-8 col-md-8 col-sm-8 col-xs-12" type="text" placeholder="search..">
             <ul class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                <li><a href="#"><img src="images/laag-6.jpg"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
-                <li><a href="#"><img src="images/laag-6.jpg"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
-                <li><a href="#"><img src="images/laag-6.jpg"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
-                <li><a href="#"><img src="images/laag-6.jpg"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
-                <li><a href="#"><img src="images/laag-6.jpg"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
+                <li><a href="#"><img src="{% static 'base/images/Laag-6.jpg' %}"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
+                <li><a href="#"><img src="{% static 'base/images/Laag-6.jpg' %}"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
+                <li><a href="#"><img src="{% static 'base/images/Laag-6.jpg' %}"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
+                <li><a href="#"><img src="{% static 'base/images/Laag-6.jpg' %}"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
+                <li><a href="#"><img src="{% static 'base/images/Laag-6.jpg' %}"><div><span class="name">Greenhouse group</span><span class="type">Web development</span><span class="place">Eindhoven</span></div></a></li>
             </ul>
         </div>
     </header>
     <!-- body here -->
+    {% block content %}
+    {% endblock %}
 
+    </div>
+</body>
   
 </html>

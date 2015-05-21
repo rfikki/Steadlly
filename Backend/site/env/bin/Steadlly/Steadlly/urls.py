@@ -17,6 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+    # In Framework
     url(r'^admin/', include(admin.site.urls)),
+    # I created this
     url(r'^', include('public.urls', namespace="public")),
 ]
