@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
+<script type="text/javascript" src="../Steadlly/lib/web3.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
 <script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
 <script type="text/javascript">
 
 var web3 = parent.web3;
+
+web3.setProvider(new web3.providers.HttpProvider('http://127.0.0.1:8079'));
 
 var contractAddress = '0x0e6582b96acf6bc3680df762fec4638865e4c42e';
 

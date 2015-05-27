@@ -1,6 +1,7 @@
 $(document).ready(function(){
     // Creates contract
     var contract = Steadlly.get("VacanciesContract");
+
     $('#createVacancy').submit(function( event ){
         var formName = "#createVacancy";
 
@@ -12,7 +13,6 @@ $(document).ready(function(){
         var skills = $(formName + " input[name='vacancy-offer']").val();
         // Creates the contract
         var id = contract.newVacancy(startDate, endDate, jobTitle, hoursOfWork, skills, rules);
-
 
         if(id){
             //TODO add the url
