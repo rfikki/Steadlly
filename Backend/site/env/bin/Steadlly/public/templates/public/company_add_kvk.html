@@ -9,9 +9,9 @@
                         To verify the existence of your company and the validity of the users request please fill in your KVK number. A SMS will be send tot the companies phone with a verification code.
                         <i>The phone number is acquired by the using the local phone book</i>
                     </p>
-                    <form class="one-field-form">
+                    <form class="one-field-form" method="POST">
                         <div class="form-container">
-                            <input class="col-lg-12 col-md-12 col-sm-12 col-xs-12" type="tel" name="user-phone" id="user-phone">
+                            {{ kvkForm.kvk }}
                             <input type="submit" value="check" id="employer-kvk" name="employer-kvk" />
                         </div>
                     </form>

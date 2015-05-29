@@ -16,6 +16,9 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(serialize=False, primary_key=True)),
                 ('name', models.CharField(max_length=100)),
             ],
+            options={
+            },
+            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Company',
@@ -30,19 +33,26 @@ class Migration(migrations.Migration):
                 ('addressStreet', models.CharField(max_length=30)),
                 ('addressHouseNr', models.CharField(max_length=30)),
                 ('facts', models.CharField(max_length=500)),
-                ('verified', models.BooleanField()),
+                ('verified', models.BooleanField(default=False)),
                 ('latitude', models.IntegerField()),
                 ('longitude', models.IntegerField()),
                 ('notifications', models.IntegerField()),
             ],
+            options={
+            },
+            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Person',
             fields=[
                 ('id', models.AutoField(serialize=False, primary_key=True)),
+                ('tel', models.IntegerField()),
                 ('about', models.CharField(max_length=100)),
                 ('notifications', models.IntegerField()),
             ],
+            options={
+            },
+            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Skill',
@@ -51,6 +61,9 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=100)),
                 ('categories', models.ManyToManyField(to='public.Category')),
             ],
+            options={
+            },
+            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Vacancy',
@@ -61,9 +74,12 @@ class Migration(migrations.Migration):
                 ('jobTitle', models.CharField(max_length=50)),
                 ('hoursOfWork', models.CharField(max_length=100)),
                 ('rules', models.CharField(max_length=50)),
-                ('valid', models.BooleanField()),
+                ('valid', models.BooleanField(default=False)),
                 ('company', models.ForeignKey(to='public.Company')),
                 ('skills', models.ManyToManyField(to='public.Skill')),
             ],
+            options={
+            },
+            bases=(models.Model,),
         ),
     ]

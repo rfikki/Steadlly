@@ -12,17 +12,18 @@ class Company(models.Model):
     addressStreet = models.CharField(max_length=30)
     addressHouseNr = models.CharField(max_length=30)
     facts = models.CharField(max_length=500)
-    verified = models.BooleanField()
-    latitude = models.IntegerField()
-    longitude = models.IntegerField()
-    notifications = models.IntegerField()
+    verified = models.BooleanField(default=False)
+    latitude = models.IntegerField(default=0)
+    longitude = models.IntegerField(default=0)
+    notifications = models.IntegerField(default=0)
 
 
 # The person i retrieved for search queries requiring performance.
 class Person(models.Model):
     id = models.AutoField(primary_key=True)
+    tel = models.IntegerField(default=0)
     about = models.CharField(max_length=100)
-    notifications = models.IntegerField()
+    notifications = models.IntegerField(default=0)
 
 
 class Category(models.Model):
@@ -46,6 +47,6 @@ class Vacancy(models.Model):
     hoursOfWork = models.CharField(max_length=100)
     skills = models.ManyToManyField(Skill)
     rules = models.CharField(max_length=50)
-    valid = models.BooleanField()
+    valid = models.BooleanField(default=False)
 
 

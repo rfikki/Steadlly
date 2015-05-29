@@ -74,7 +74,9 @@ var Steadlly = Steadlly || {
                                 // in order to parse a json only " are accepted
                                 var arrayDesc = data.contracts[i].contractDescription.replace(/'/ig, "\"");
                                 arrayDesc = JSON.parse(arrayDesc);
-                                Steadlly._contracts._list.push({'name': data.contracts[i].name,'object': web3.eth.contract(data.contracts[i].address, arrayDesc)});
+                                var myContract = web3.eth.contract(arrayDesc);
+                                var objectHandler = myContract.at(myContract);
+                                Steadlly._contracts._list.push({'name': data.contracts[i].name,'object': objectHandler });
                             }
                         }
                         // Verifies whether the user has a company

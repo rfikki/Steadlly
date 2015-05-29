@@ -3,6 +3,7 @@ from django.views import generic
 from django.template import RequestContext, loader
 from django.contrib import auth
 from django.http import HttpResponse
+from .forms import KVKForm, TelephoneForm
 from django.core.context_processors import csrf
 
 baseTitle = "Steadlly :: "
@@ -30,15 +31,23 @@ def create_vacancy_view(request):
 
 
 def add_employee(request):
+
     title = baseTitle + "Add employee"
-    context = { "title" : title }
-    template = loader.get_template('public/user_add.html')
-    return HttpResponse(template.render(context))
+
+    # te = request.POST.get("tel","")
+    if 'submit' in request.POST:
+        return redirect('public:')
+    else:
+        form = TelephoneForm
+        context = RequestContext(request, { "title" : title , "telForm" : form})
+        template = loader.get_template('public/user_add.html')
+        return HttpResponse(template.render(context))
 
 
 def add_company_kvk(request):
     title = baseTitle + "Add complany kvk"
-    context = { "title" : title }
+    form = KVKForm
+    context = { "title" : title , "kvkForm" : form}
     template = loader.get_template('public/company_add_kvk.html')
     return HttpResponse(template.render(context))
 
