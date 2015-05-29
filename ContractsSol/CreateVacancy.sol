@@ -4,12 +4,12 @@ contract CreateVacancy
 	struct SVacancy
 	{
 		
-		string32 startDate;
-		string32 endDate;
-		string32 jobTitle;
-		string32 hoursOfWork;
-		string32 skills;
-		string32 rules;
+		bytes32 startDate;
+		bytes32 endDate;
+		bytes32 jobTitle;
+		bytes32 hoursOfWork;
+		bytes32 skills;
+		bytes32 rules;
 		bool valid;
 		address company;
 		
@@ -32,7 +32,7 @@ contract CreateVacancy
 	mapping (uint => SVacancy) vacancies;
 	mapping (uint => SApplicants) applicants;
 	mapping (uint => SApplicantAddress) addreses;
-	function newVacancy (string32 startDate, string32 endDate, string32 jobTitle,string32 hoursOfWork,string32 skills, string32 rules ) returns (uint vacancyID)
+	function newVacancy (bytes32 startDate, bytes32 endDate, bytes32 jobTitle,bytes32 hoursOfWork,bytes32 skills, bytes32 rules ) returns (uint vacancyID)
 	{
 		vacancyID = nrVacancies++;
 		SVacancy v = vacancies[vacancyID];
@@ -84,7 +84,7 @@ contract CreateVacancy
 		
 	}
 
-	function returnVacancy(uint vacancyID) constant returns(address i,string32 w,string32 e,string32 r,string32 t,string32 y,string32 u,bool o){
+	function returnVacancy(uint vacancyID) constant returns(address i,bytes32 w,bytes32 e,bytes32 r,bytes32 t,bytes32 y,bytes32 u,bool o){
 		SVacancy v = vacancies[vacancyID];
 		i = v.company;
 		w = v.startDate;

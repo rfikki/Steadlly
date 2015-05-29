@@ -2,13 +2,13 @@ contract CompanyData
 {
 	struct SCompany
 	{
-		string32 companyName;
+		bytes32 companyName;
 		address owner;
 		uint KVKnr;
 		uint phoneNumber;
 		uint nrAdmins;
 		bool verified;
-		string32 creationDate;
+		bytes32 creationDate;
 	}
 
 	struct SAdministration
@@ -21,7 +21,7 @@ contract CompanyData
 	mapping(address => SCompany) companies;
 	mapping(uint => SAdministration) administrators;
 
-	function createCompany(string32 cname,uint KVK,uint phone){
+	function createCompany(bytes32 cname,uint KVK,uint phone){
 
 		nrCompanies++;
 		SCompany c = companies[msg.sender];
@@ -36,7 +36,7 @@ contract CompanyData
 	}
 
 
-	function verifyCompany(address companyAddress, string32 creationDate){
+	function verifyCompany(address companyAddress, bytes32 creationDate){
 		address oracle = 0x7bd8e81447b673b7182ea82a6346a8dbe3df7274;
 		if(msg.sender == oracle){
 			SCompany c = companies[companyAddress];
@@ -67,7 +67,7 @@ contract CompanyData
 		adr = a.addrAdmin;
 	}
 
-	function returnCompany(address adr) constant returns (string32 name, address own,uint kvk,uint phone){
+	function returnCompany(address adr) constant returns (bytes32 name, address own,uint kvk,uint phone){
 		SCompany c = companies[adr];
 		name = c.companyName;
 		own = c.owner;
@@ -81,7 +81,7 @@ contract CompanyData
 		delete a.addrAdmin;
 	}
 
-	function returnOwnCompany() constant returns (string32 name, address own,uint kvk,uint phone){
+	function returnOwnCompany() constant returns (bytes32 name, address own,uint kvk,uint phone){
 		SCompany c = companies[msg.sender];
 		name = c.companyName;
 		own = c.owner;

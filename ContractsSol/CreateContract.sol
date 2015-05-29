@@ -3,17 +3,17 @@ contract CreateContract
 	struct Company
 	{
 		address addr;
-		string32 CompanyName;
+		bytes32 CompanyName;
 	}
 	struct SContract
 	{
 		address employee;
-		string32 startDate;
-		string32 endDate;
-		string32 jobTitle;
-		string32 hoursOfWork;
-		string32 skills;
-		string32 rules;
+		bytes32 startDate;
+		bytes32 endDate;
+		bytes32 jobTitle;
+		bytes32 hoursOfWork;
+		bytes32 skills;
+		bytes32 rules;
 		bool signed;
 		address owner;
 		
@@ -21,7 +21,7 @@ contract CreateContract
 	}
 	uint nrContracts;
 	mapping (uint => SContract) contracts;
-	function newContract (address employee,string32 startDate, string32 endDate, string32 jobTitle,string32 hoursOfWork,string32 skills, string32 rules ) returns (uint contractID)
+	function newContract (address employee,bytes32 startDate, bytes32 endDate, bytes32 jobTitle,bytes32 hoursOfWork,bytes32 skills, bytes32 rules ) returns (uint contractID)
 	{
 		contractID = nrContracts++;
 		SContract c = contracts[contractID];
@@ -72,7 +72,7 @@ contract CreateContract
 		
 	}
 
-	function returnContract(uint contractID) constant returns(address q, string32 w,string32 e,string32 r,string32 t,string32 y,string32 u,address i,bool o){
+	function returnContract(uint contractID) constant returns(address q, bytes32 w,bytes32 e,bytes32 r,bytes32 t,bytes32 y,bytes32 u,address i,bool o){
 		SContract c = contracts[contractID];
 		q = c.employee;
 		w = c.startDate;

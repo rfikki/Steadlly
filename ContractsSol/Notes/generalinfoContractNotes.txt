@@ -4,3 +4,22 @@ contract GeneralInfo{function returnGenInfo()constant returns(address coinbase,u
 
 
 address: 0x74aa502619e66850faad7701a2dfd803e7c9ca51
+
+
+
+
+NewChain// ignore this
+
+var GeneralInfo = web3.eth.contractFromAbi([{"constant":true,"inputs":[],"name":"returnGenInfo","outputs":[{"name":"coinbase","type":"address"},{"name":"bdifficulty","type":"uint256"},{"name":"bgaslim","type":"uint256"},{"name":"blockNr","type":"uint256"},{"name":"timestamp","type":"uint256"},{"name":"remGas","type":"uint256"},{"name":"sender","type":"address"}],"type":"function"}]);
+contract GeneralInfo{function returnGenInfo()constant returns(address coinbase,uint256 bdifficulty,uint256 bgaslim,uint256 blockNr,uint256 timestamp,uint256 remGas,address sender){}}
+9ec64c1c… :returnGenInfo
+
+address: 0xa4a47f119353fc4c48821c1d5eb15c19dd401797
+
+
+var GeneralInfo = web3.eth.contractFromAbi([{"constant":true,"inputs":[],"name":"returnGenInfo","outputs":[{"name":"coinbase","type":"address"},{"name":"bdifficulty","type":"uint256"},{"name":"bgaslim","type":"uint256"},{"name":"blockNr","type":"uint256"},{"name":"timestamp","type":"uint256"},{"name":"remGas","type":"uint256"},{"name":"sender","type":"address"}],"type":"function"}]);
+contract GeneralInfo{function returnGenInfo()constant returns(address coinbase,uint256 bdifficulty,uint256 bgaslim,uint256 blockNr,uint256 timestamp,uint256 remGas,address sender){}}
+9ec64c1c… :returnGenInfo
+
+
+address: 0x2c556a4e757f00be4ec43b010445414a83395fc5

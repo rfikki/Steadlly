@@ -7,15 +7,9 @@
 
 var web3 = parent.web3;
 
-var contractAddress = '0x74aa502619e66850faad7701a2dfd803e7c9ca51';
+var contractAddress = '0x2c556a4e757f00be4ec43b010445414a83395fc5';
 
-var generalinfoContract = [{"constant":true,"inputs":[],"name":"returnGenInfo","outputs":
-
-[{"name":"coinbase","type":"address"},{"name":"bdifficulty","type":"uint256"},{"name":"bgaslim","type":"uint256"},
-
-{"name":"blockNr","type":"uint256"},{"name":"timestamp","type":"uint256"},{"name":"remGas","type":"uint256"},
-
-{"name":"sender","type":"address"}],"type":"function"}];
+var generalinfoContract = [{"constant":true,"inputs":[],"name":"returnGenInfo","outputs":[{"name":"coinbase","type":"address"},{"name":"bdifficulty","type":"uint256"},{"name":"bgaslim","type":"uint256"},{"name":"blockNr","type":"uint256"},{"name":"timestamp","type":"uint256"},{"name":"remGas","type":"uint256"},{"name":"sender","type":"address"}],"type":"function"}];
 var objectHandler = web3.eth.contract(contractAddress, generalinfoContract);
 
 function returnData(){

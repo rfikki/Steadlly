@@ -9,19 +9,7 @@ var web3 = parent.web3;
 
 var contractAddress = '0x545fd95308230e9f0cf970b4cd8677bc1089e875';
 
-var CreateContract = [{"constant":true,"inputs":[{"name":"contractID","type":"uint256"}],"name":"returnContract","outputs":[{"name":"q","type":"address"},{"name":"w","type":"string32"},
-
-{"name":"e","type":"string32"},{"name":"r","type":"string32"},{"name":"t","type":"string32"},{"name":"y","type":"string32"},{"name":"u","type":"string32"},{"name":"i","type":"address"},
-
-{"name":"o","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"employee","type":"address"},{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},
-
-{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newContract","outputs":
-
-[{"name":"contractID","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"contractID","type":"uint256"}],"name":"DestroyContract","outputs":[],"type":"function"},{"constant":true,"inputs":
-
-[{"name":"contractID","type":"uint256"}],"name":"ChechContractStatus","outputs":[{"name":"retVal","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrContracts","outputs":
-
-[{"name":"r","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"contractID","type":"uint256"}],"name":"SignContract","outputs":[],"type":"function"}];
+var CreateContract = [{"constant":true,"inputs":[{"name":"contractID","type":"uint256"}],"name":"returnContract","outputs":[{"name":"q","type":"address"},{"name":"w","type":"string32"},{"name":"e","type":"string32"},{"name":"r","type":"string32"},{"name":"t","type":"string32"},{"name":"y","type":"string32"},{"name":"u","type":"string32"},{"name":"i","type":"address"},{"name":"o","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"employee","type":"address"},{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newContract","outputs":[{"name":"contractID","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"contractID","type":"uint256"}],"name":"DestroyContract","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"contractID","type":"uint256"}],"name":"ChechContractStatus","outputs":[{"name":"retVal","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrContracts","outputs":[{"name":"r","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"contractID","type":"uint256"}],"name":"SignContract","outputs":[],"type":"function"}];
 var objectHandler = web3.eth.contract(contractAddress, CreateContract);
 function createNewContract(){
 // (address employee,string32 startDate, string32 endDate, string32 jobTitle,string32 hoursOfWork,string32 skills, string32 rules ) 
@@ -63,7 +51,7 @@ function ShowAllContracts(){
 	for (i=0; i<n;i++)
 	{
 		var a = objectHandler.returnContract(i);
-		document.getElementById('contractInfo3').value +="ContractID="+i+"  "+ ('The Company under the following address: '+a[0]+' has opened a vacancy from '+a[1]+' until '+a[2]+' for the position of  '+a[3]+' with the amount of working hours: '+a[4]+' and during his stay at the company he will aquire the following skills:'+a[5]+' under the following rules: '+a[6]+'  Vacancy valid: '+a[7]).toString()+'\n'+'-------------------------------------'+'\n';
+		document.getElementById('contractInfo3').value +="ContractID="+i+"  "+ ('The Employee with the address: '+a[0]+' has agreed to start working from '+a[1]+' untill '+a[2]+' on the position of the '+a[3]+' with the amount of working hours: '+a[4]+' and during his stay at the company he will aquire the following skills:'+a[5]+' under the following rules: '+a[6]+' and the company address is:'+a[7]+' Contract signed: '+a[8]+'\n'+'-------------------------------------'+'\n').toString();
 
 
 

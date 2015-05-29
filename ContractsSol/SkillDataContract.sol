@@ -7,7 +7,8 @@ contract SkillDataContract
 	}
 	struct SSkill
 	{
-		string32 skillName;
+		bytes32 skillName;
+		address verifier;
 	}
 	
   
@@ -17,7 +18,7 @@ contract SkillDataContract
 	mapping(address => SPerson) people;
 	mapping(uint => SSkill) skills;
 
-	function addSkilltoPerson(address addr,string32 skillname){
+	function addSkilltoPerson(address addr,bytes32 skillname){
 
 		
 		SPerson p = people[addr];
@@ -25,6 +26,7 @@ contract SkillDataContract
 		p.nrSkills++;
 		SSkill s = skills[p.nrSkills-1];
 		s.skillName = skillname;
+		s.verifier = msg.sender;
 		
 
 		}
@@ -35,10 +37,11 @@ contract SkillDataContract
 
 	}	
 
-	function returnSkills(address addr,uint skillID) constant returns (string32 u ){
+	function returnSkills(address addr,uint skillID) constant returns (bytes32 u, address w ){
 		SPerson p = people[addr];
 		SSkill s = skills[skillID];
 		u = s.skillName;
+		w = s.verifier;
 
 	}
-}
+}	

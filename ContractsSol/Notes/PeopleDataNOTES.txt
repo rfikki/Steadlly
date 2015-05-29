@@ -8,3 +8,16 @@ d4164697… :returnCurrentAddressOnly
 
 
 address: 0x985fbb2e44871a8a5172cbf52dfe74a69e34a0c2
+
+
+NewChain// ignoreee
+
+var PeopleData = web3.eth.contractFromAbi([{"constant":true,"inputs":[{"name":"adr","type":"address"}],"name":"returnPerson","outputs":[{"name":"_adr","type":"address"},{"name":"telephone","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"telephone","type":"uint256"}],"name":"addPerson","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"returnCurrentPerson","outputs":[{"name":"_adr","type":"address"},{"name":"telephone","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrPeople","outputs":[{"name":"n","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnCurrentAddressOnly","outputs":[{"name":"_adr","type":"address"}],"type":"function"}]);
+contract PeopleData{function returnPerson(address adr)constant returns(address _adr,uint256 telephone){}function addPerson(uint256 telephone){}function returnCurrentPerson()constant returns(address _adr,uint256 telephone){}function returnNrPeople()constant returns(uint256 n){}function returnCurrentAddressOnly()constant returns(address _adr){}}
+5605168d… :returnPerson
+7bc55ce1… :addPerson
+943214fa… :returnCurrentPerson
+b54d9c5f… :returnNrPeople
+d4164697… :returnCurrentAddressOnly
+
+address: 0x657bb0293142b2833ec2408f30889697de4a6c0a

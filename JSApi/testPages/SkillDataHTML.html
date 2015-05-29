@@ -11,11 +11,15 @@ var contractAddress = '0x5f6d36e42e35cb96a5ec36153e6f6f0535ee0232';
 
 var SkillDataContract = [{"constant":true,"inputs":[{"name":"addr","type":"address"},
 
-{"name":"skillID","type":"uint256"}],"name":"returnSkills","outputs":[{"name":"u","type":"string32"},{"name":"w","type":"address"}],"type":"function"},
+{"name":"skillID","type":"uint256"}],"name":"returnSkills","outputs":[{"name":"u","type":"string32"},
 
-{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"returnNrSkills","outputs":[{"name":"n","type":"uint256"}],"type":"function"},
+{"name":"w","type":"address"}],"type":"function"},{"constant":true,"inputs":
 
-{"constant":false,"inputs":[{"name":"addr","type":"address"},{"name":"skillname","type":"string32"}],"name":"addSkilltoPerson","outputs":[],"type":"function"}];
+[{"name":"addr","type":"address"}],"name":"returnNrSkills","outputs":[{"name":"n","type":"uint256"}],"type":"function"},
+
+{"constant":false,"inputs":[{"name":"addr","type":"address"},
+
+{"name":"skillname","type":"string32"}],"name":"addSkilltoPerson","outputs":[],"type":"function"}];
 
 
 

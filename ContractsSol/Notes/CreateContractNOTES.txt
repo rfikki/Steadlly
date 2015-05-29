@@ -8,3 +8,20 @@ d2ba835e… :returnNrContracts
 fd7c2ef3… :SignContract
 
 address: 0x545fd95308230e9f0cf970b4cd8677bc1089e875
+
+
+
+
+NewChain
+
+var CreateContract = web3.eth.contractFromAbi([{"constant":true,"inputs":[{"name":"contractID","type":"uint256"}],"name":"returnContract","outputs":[{"name":"q","type":"address"},{"name":"w","type":"string32"},{"name":"e","type":"string32"},{"name":"r","type":"string32"},{"name":"t","type":"string32"},{"name":"y","type":"string32"},{"name":"u","type":"string32"},{"name":"i","type":"address"},{"name":"o","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"employee","type":"address"},{"name":"startDate","type":"string32"},{"name":"endDate","type":"string32"},{"name":"jobTitle","type":"string32"},{"name":"hoursOfWork","type":"string32"},{"name":"skills","type":"string32"},{"name":"rules","type":"string32"}],"name":"newContract","outputs":[{"name":"contractID","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"contractID","type":"uint256"}],"name":"DestroyContract","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"contractID","type":"uint256"}],"name":"ChechContractStatus","outputs":[{"name":"retVal","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"returnNrContracts","outputs":[{"name":"r","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"contractID","type":"uint256"}],"name":"SignContract","outputs":[],"type":"function"}]);
+contract CreateContract{function returnContract(uint256 contractID)constant returns(address q,string32 w,string32 e,string32 r,string32 t,string32 y,string32 u,address i,bool o){}function newContract(address employee,string32 startDate,string32 endDate,string32 jobTitle,string32 hoursOfWork,string32 skills,string32 rules)returns(uint256 contractID){}function DestroyContract(uint256 contractID){}function ChechContractStatus(uint256 contractID)constant returns(bool retVal){}function returnNrContracts()constant returns(uint256 r){}function SignContract(uint256 contractID){}}
+56b5ef6c… :returnContract
+5c352b49… :newContract
+b2a19e3b… :DestroyContract
+c26bbe17… :ChechContractStatus
+d2ba835e… :returnNrContracts
+fd7c2ef3… :SignContract
+
+
+address: 0xee1df803b96e2c085db9c327a4d73471b6a0488c
