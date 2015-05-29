@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+var web3 = parent.web3;
+
+var contractAddress = '0x74aa502619e66850faad7701a2dfd803e7c9ca51';
+
+var generalinfoContract = [{"constant":true,"inputs":[],"name":"returnGenInfo","outputs":
+
+[{"name":"coinbase","type":"address"},{"name":"bdifficulty","type":"uint256"},{"name":"bgaslim","type":"uint256"},
+
+{"name":"blockNr","type":"uint256"},{"name":"timestamp","type":"uint256"},{"name":"remGas","type":"uint256"},
+
+{"name":"sender","type":"address"}],"type":"function"}];
+var objectHandler = web3.eth.contract(contractAddress, generalinfoContract);
+
+function returnData(){
+	
+	var n = objectHandler.returnGenInfo();
+	var date = new Date(n[4] * 1000);
+	document.getElementById('contractInfo3').value = ('Block coinbase: '+n[0]+'\n Block diffuculty '+n[1]+'\n block gas limit: '+n[2]+'\n block number: '+n[3]+' \n ' + 'Date: '+ date.getDate() + '/' + (parseInt(date.getMonth())+1) + '/'+ date.getFullYear()  + ' block timestamp: '+date.getHours() + ':'+date.getMinutes() + ':'+ date.getSeconds() +' \n remaining Gas:'+n[5]+' \n Sender: '+n[6]).toString();
+}
+
+
+</script>
+<head>
+	<title></title>
+</head>
+<body>
+
+	 <h1>Show data</h1>
+	 <button onclick="returnData()">Show</button>
+	<p>info:</p>
+	 <textarea id='contractInfo3', rows="10", cols="120"> </textarea>
+</body>
+
+</html>
